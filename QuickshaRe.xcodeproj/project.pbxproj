@@ -16,7 +16,7 @@
 		797AF64B23A7E0CB00E41949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64A23A7E0CB00E41949 /* Assets.xcassets */; };
 		797AF64E23A7E0CB00E41949 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64D23A7E0CB00E41949 /* Preview Assets.xcassets */; };
 		797AF65123A7E0CB00E41949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64F23A7E0CB00E41949 /* LaunchScreen.storyboard */; };
-		797AF65C23A7E0CB00E41949 /* QuickshaReTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */; };
+		797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */; };
 		797AF66723A7E0CB00E41949 /* QuickshaReUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,7 @@
 		797AF65023A7E0CB00E41949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		797AF65223A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReTests.swift; sourceTree = "<group>"; };
+		797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPictoreGeneratorTests.swift; sourceTree = "<group>"; };
 		797AF65D23A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReUITests.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		797AF65A23A7E0CB00E41949 /* QuickshaReTests */ = {
 			isa = PBXGroup;
 			children = (
-				797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */,
+				797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */,
 				797AF65D23A7E0CB00E41949 /* Info.plist */,
 			);
 			path = QuickshaReTests;
@@ -313,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				797AF65C23A7E0CB00E41949 /* QuickshaReTests.swift in Sources */,
+				797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
