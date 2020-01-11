@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */; };
 		791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71C23C623FB00AFFB30 /* Picture.swift */; };
 		794B927523C62B5100C6BC4D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794B927423C62B5100C6BC4D /* CoreImage.framework */; };
 		794B927723C62B5C00C6BC4D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794B927623C62B5C00C6BC4D /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPictureGenerator.swift; sourceTree = "<group>"; };
 		791EE71C23C623FB00AFFB30 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		794B927423C62B5100C6BC4D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		794B927623C62B5C00C6BC4D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		791EE71823C6239100AFFB30 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		791EE71B23C623EE00AFFB30 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +135,7 @@
 			children = (
 				797AF64423A7E0C800E41949 /* AppDelegate.swift */,
 				797AF64623A7E0C800E41949 /* SceneDelegate.swift */,
+				791EE71823C6239100AFFB30 /* Domain */,
 				791EE71B23C623EE00AFFB30 /* Data */,
 				797AF64A23A7E0CB00E41949 /* Assets.xcassets */,
 				797AF64F23A7E0CB00E41949 /* LaunchScreen.storyboard */,
@@ -293,6 +304,7 @@
 			files = (
 				797AF64523A7E0C800E41949 /* AppDelegate.swift in Sources */,
 				797AF64723A7E0C800E41949 /* SceneDelegate.swift in Sources */,
+				791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */,
 				791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
