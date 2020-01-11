@@ -19,6 +19,7 @@
 		797AF65123A7E0CB00E41949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64F23A7E0CB00E41949 /* LaunchScreen.storyboard */; };
 		797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */; };
 		797AF66723A7E0CB00E41949 /* QuickshaReUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */; };
+		BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96013B23C6FC040034CE20 /* TextInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReUITests.swift; sourceTree = "<group>"; };
 		797AF66823A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		BFA80C4723C6F29B003DF63D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				BF96013B23C6FC040034CE20 /* TextInputView.swift */,
 				797AF64823A7E0C800E41949 /* QRCodeImageView.swift */,
 			);
 			path = UI;
@@ -315,6 +318,7 @@
 			files = (
 				797AF64523A7E0C800E41949 /* AppDelegate.swift in Sources */,
 				797AF64723A7E0C800E41949 /* SceneDelegate.swift in Sources */,
+				BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */,
 				791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */,
 				797AF64923A7E0C800E41949 /* QRCodeImageView.swift in Sources */,
 				791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */,
