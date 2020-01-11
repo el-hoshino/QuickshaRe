@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */; };
+		791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71C23C623FB00AFFB30 /* Picture.swift */; };
+		794B927523C62B5100C6BC4D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794B927423C62B5100C6BC4D /* CoreImage.framework */; };
+		794B927723C62B5C00C6BC4D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794B927623C62B5C00C6BC4D /* CoreGraphics.framework */; };
 		797AF64523A7E0C800E41949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF64423A7E0C800E41949 /* AppDelegate.swift */; };
 		797AF64723A7E0C800E41949 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF64623A7E0C800E41949 /* SceneDelegate.swift */; };
-		797AF64923A7E0C800E41949 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF64823A7E0C800E41949 /* ContentView.swift */; };
+		797AF64923A7E0C800E41949 /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF64823A7E0C800E41949 /* QRCodeImageView.swift */; };
 		797AF64B23A7E0CB00E41949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64A23A7E0CB00E41949 /* Assets.xcassets */; };
 		797AF64E23A7E0CB00E41949 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64D23A7E0CB00E41949 /* Preview Assets.xcassets */; };
 		797AF65123A7E0CB00E41949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797AF64F23A7E0CB00E41949 /* LaunchScreen.storyboard */; };
-		797AF65C23A7E0CB00E41949 /* QuickshaReTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */; };
+		797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */; };
 		797AF66723A7E0CB00E41949 /* QuickshaReUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */; };
+		798FC31523CA078F00ACB7F5 /* QRPictureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */; };
+		798FC31623CA079500ACB7F5 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791EE71C23C623FB00AFFB30 /* Picture.swift */; };
+		79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB0FB823CA06430040E275 /* ShareViewController.swift */; };
+		79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DB0FBA23CA06430040E275 /* MainInterface.storyboard */; };
+		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96013B23C6FC040034CE20 /* TextInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,23 +42,53 @@
 			remoteGlobalIDString = 797AF64023A7E0C800E41949;
 			remoteInfo = QuickshaRe;
 		};
+		79DB0FBE23CA06430040E275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 797AF63923A7E0C800E41949 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79DB0FB523CA06430040E275;
+			remoteInfo = ShareMenu;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		79DB0FC123CA06430040E275 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPictureGenerator.swift; sourceTree = "<group>"; };
+		791EE71C23C623FB00AFFB30 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		794B927423C62B5100C6BC4D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		794B927623C62B5C00C6BC4D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		797AF64123A7E0C800E41949 /* QuickshaRe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickshaRe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797AF64423A7E0C800E41949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		797AF64623A7E0C800E41949 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		797AF64823A7E0C800E41949 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		797AF64823A7E0C800E41949 /* QRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
 		797AF64A23A7E0CB00E41949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		797AF64D23A7E0CB00E41949 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		797AF65023A7E0CB00E41949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		797AF65223A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReTests.swift; sourceTree = "<group>"; };
+		797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPictoreGeneratorTests.swift; sourceTree = "<group>"; };
 		797AF65D23A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReUITests.swift; sourceTree = "<group>"; };
 		797AF66823A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79DB0FB623CA06430040E275 /* ShareMenu.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareMenu.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		79DB0FB823CA06430040E275 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		79DB0FBB23CA06430040E275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		79DB0FBD23CA06430040E275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794B927723C62B5C00C6BC4D /* CoreGraphics.framework in Frameworks */,
+				794B927523C62B5100C6BC4D /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,16 +115,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		79DB0FB323CA06430040E275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		791EE71823C6239100AFFB30 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		791EE71B23C623EE00AFFB30 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				791EE71C23C623FB00AFFB30 /* Picture.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		794B927323C62B5100C6BC4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				794B927623C62B5C00C6BC4D /* CoreGraphics.framework */,
+				794B927423C62B5100C6BC4D /* CoreImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		797AF63823A7E0C800E41949 = {
 			isa = PBXGroup;
 			children = (
 				797AF64323A7E0C800E41949 /* QuickshaRe */,
 				797AF65A23A7E0CB00E41949 /* QuickshaReTests */,
 				797AF66523A7E0CB00E41949 /* QuickshaReUITests */,
+				79DB0FB723CA06430040E275 /* ShareMenu */,
 				797AF64223A7E0C800E41949 /* Products */,
+				794B927323C62B5100C6BC4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +168,7 @@
 				797AF64123A7E0C800E41949 /* QuickshaRe.app */,
 				797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */,
 				797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */,
+				79DB0FB623CA06430040E275 /* ShareMenu.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,7 +178,9 @@
 			children = (
 				797AF64423A7E0C800E41949 /* AppDelegate.swift */,
 				797AF64623A7E0C800E41949 /* SceneDelegate.swift */,
-				797AF64823A7E0C800E41949 /* ContentView.swift */,
+				BFA80C4723C6F29B003DF63D /* UI */,
+				791EE71823C6239100AFFB30 /* Domain */,
+				791EE71B23C623EE00AFFB30 /* Data */,
 				797AF64A23A7E0CB00E41949 /* Assets.xcassets */,
 				797AF64F23A7E0CB00E41949 /* LaunchScreen.storyboard */,
 				797AF65223A7E0CB00E41949 /* Info.plist */,
@@ -121,7 +200,7 @@
 		797AF65A23A7E0CB00E41949 /* QuickshaReTests */ = {
 			isa = PBXGroup;
 			children = (
-				797AF65B23A7E0CB00E41949 /* QuickshaReTests.swift */,
+				797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */,
 				797AF65D23A7E0CB00E41949 /* Info.plist */,
 			);
 			path = QuickshaReTests;
@@ -136,6 +215,25 @@
 			path = QuickshaReUITests;
 			sourceTree = "<group>";
 		};
+		79DB0FB723CA06430040E275 /* ShareMenu */ = {
+			isa = PBXGroup;
+			children = (
+				79DB0FB823CA06430040E275 /* ShareViewController.swift */,
+				79DB0FBA23CA06430040E275 /* MainInterface.storyboard */,
+				79DB0FBD23CA06430040E275 /* Info.plist */,
+			);
+			path = ShareMenu;
+			sourceTree = "<group>";
+		};
+		BFA80C4723C6F29B003DF63D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BF96013B23C6FC040034CE20 /* TextInputView.swift */,
+				797AF64823A7E0C800E41949 /* QRCodeImageView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,10 +244,12 @@
 				797AF63D23A7E0C800E41949 /* Sources */,
 				797AF63E23A7E0C800E41949 /* Frameworks */,
 				797AF63F23A7E0C800E41949 /* Resources */,
+				79DB0FC123CA06430040E275 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				79DB0FBF23CA06430040E275 /* PBXTargetDependency */,
 			);
 			name = QuickshaRe;
 			productName = QuickshaRe;
@@ -192,6 +292,23 @@
 			productReference = 797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		79DB0FB523CA06430040E275 /* ShareMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79DB0FC423CA06430040E275 /* Build configuration list for PBXNativeTarget "ShareMenu" */;
+			buildPhases = (
+				79DB0FB223CA06430040E275 /* Sources */,
+				79DB0FB323CA06430040E275 /* Frameworks */,
+				79DB0FB423CA06430040E275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareMenu;
+			productName = ShareMenu;
+			productReference = 79DB0FB623CA06430040E275 /* ShareMenu.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -213,6 +330,9 @@
 						CreatedOnToolsVersion = 11.2;
 						TestTargetID = 797AF64023A7E0C800E41949;
 					};
+					79DB0FB523CA06430040E275 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 				};
 			};
 			buildConfigurationList = 797AF63C23A7E0C800E41949 /* Build configuration list for PBXProject "QuickshaRe" */;
@@ -229,6 +349,7 @@
 			projectRoot = "";
 			targets = (
 				797AF64023A7E0C800E41949 /* QuickshaRe */,
+				79DB0FB523CA06430040E275 /* ShareMenu */,
 				797AF65623A7E0CB00E41949 /* QuickshaReTests */,
 				797AF66123A7E0CB00E41949 /* QuickshaReUITests */,
 			);
@@ -260,6 +381,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		79DB0FB423CA06430040E275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -269,7 +398,10 @@
 			files = (
 				797AF64523A7E0C800E41949 /* AppDelegate.swift in Sources */,
 				797AF64723A7E0C800E41949 /* SceneDelegate.swift in Sources */,
-				797AF64923A7E0C800E41949 /* ContentView.swift in Sources */,
+				BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */,
+				791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */,
+				797AF64923A7E0C800E41949 /* QRCodeImageView.swift in Sources */,
+				791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				797AF65C23A7E0CB00E41949 /* QuickshaReTests.swift in Sources */,
+				797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +418,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				797AF66723A7E0CB00E41949 /* QuickshaReUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79DB0FB223CA06430040E275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798FC31623CA079500ACB7F5 /* Picture.swift in Sources */,
+				79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */,
+				798FC31523CA078F00ACB7F5 /* QRPictureGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +444,11 @@
 			target = 797AF64023A7E0C800E41949 /* QuickshaRe */;
 			targetProxy = 797AF66323A7E0CB00E41949 /* PBXContainerItemProxy */;
 		};
+		79DB0FBF23CA06430040E275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79DB0FB523CA06430040E275 /* ShareMenu */;
+			targetProxy = 79DB0FBE23CA06430040E275 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -311,6 +458,14 @@
 				797AF65023A7E0CB00E41949 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		79DB0FBA23CA06430040E275 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79DB0FBB23CA06430040E275 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -433,6 +588,7 @@
 		797AF66C23A7E0CB00E41949 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickshaRe/Preview Content\"";
@@ -443,6 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -453,6 +610,7 @@
 		797AF66D23A7E0CB00E41949 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickshaRe/Preview Content\"";
@@ -463,6 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -554,6 +713,46 @@
 			};
 			name = Release;
 		};
+		79DB0FC223CA06430040E275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KC8N9BMQJY;
+				INFOPLIST_FILE = ShareMenu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe.ShareMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79DB0FC323CA06430040E275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KC8N9BMQJY;
+				INFOPLIST_FILE = ShareMenu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe.ShareMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -589,6 +788,15 @@
 			buildConfigurations = (
 				797AF67223A7E0CB00E41949 /* Debug */,
 				797AF67323A7E0CB00E41949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79DB0FC423CA06430040E275 /* Build configuration list for PBXNativeTarget "ShareMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79DB0FC223CA06430040E275 /* Debug */,
+				79DB0FC323CA06430040E275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
