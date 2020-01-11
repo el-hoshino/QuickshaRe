@@ -8,24 +8,185 @@
 
 import UIKit
 import Social
+import MobileCoreServices
 
-class ShareViewController: SLComposeServiceViewController {
-
-    override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
-    }
-
-    override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+class ShareViewController: UIViewController {
     
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+    @IBOutlet weak var qrImageView: UIImageView!
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var sharingItemSwitch: UISegmentedControl!
+    
+    private lazy var generator = QRPictureGenerator()
+    
+    private typealias SharingItem = (type: String, content: String)
+    private var sharingItems: [SharingItem] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialize()
+        retrieveData { [weak self] (items) in
+            DispatchQueue.main.async {
+                self?.refreshView(with: items)
+            }
+        }
     }
-
-    override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
+    
+    private func initialize() {
+                
+        qrImageView.layer.magnificationFilter = .nearest
+        
     }
+    
+    private func retrieveData(completion: @escaping ([SharingItem]) -> Void) {
+        
+        guard let inputItem = extensionContext?.inputItems.first(compacted: { $0 as? NSExtensionItem }) else {
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let parsed = self.parsingSharingItems(from: inputItem)
+            completion(parsed)
+        }
+        
+    }
+    
+    private func refreshView(with items: [SharingItem]) {
+        
+        sharingItems = items
+        
+        updateSharingItemSwitch()
+        
+    }
+    
+    @IBAction private func switchSegment(sender: UISegmentedControl) {
+        
+        guard sharingItems.indices.contains(sender.selectedSegmentIndex) else {
+            assertionFailure("Invalid index \(sender.selectedSegmentIndex)")
+            return
+        }
+        
+        let selectedItem = sharingItems[sender.selectedSegmentIndex]
+        textLabel.text = selectedItem.content
+        let image = generator.qrPicture(for: selectedItem.content)
+        qrImageView.image = image.uiImage
+        
+    }
+    
+    @IBAction private func dismiss() {
+        extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+    }
+    
+}
 
+extension ShareViewController {
+    
+    private func loadItem(from attachment: NSItemProvider, as typeIdentifier: String, completion: @escaping (SharingItem?) -> Void) {
+        
+        attachment.loadItem(forTypeIdentifier: typeIdentifier) { (coding, error) in
+            
+            guard let item = coding else {
+                assertionFailure("Failed to load item for \(typeIdentifier). Error: \(error as Any)")
+                return completion(nil)
+            }
+            
+            switch typeIdentifier as CFString {
+            case kUTTypeURL:
+                guard let url = item as? URL else { assertionFailure("Failed to load item as URL."); break }
+                return completion(("URL", url.absoluteString))
+                
+            case kUTTypeText, kUTTypePlainText:
+                guard let text = item as? String else { assertionFailure("Failed to load item as Text."); break }
+                return completion(("Text", text))
+                
+            default:
+                return completion(nil)
+            }
+            
+        }
+        
+    }
+    
+    private func parsingSharingItems(from inputItem: NSExtensionItem) -> [SharingItem] {
+        
+        var output: [SharingItem] = []
+        
+        let dispatchGroup = DispatchGroup()
+        
+        for attatchment in inputItem.attachments ?? [] {
+            for identifier in attatchment.registeredTypeIdentifiers {
+                
+                dispatchGroup.enter()
+                loadItem(from: attatchment, as: identifier, completion: { [dispatchGroup] item in
+                    defer { dispatchGroup.leave() }
+                    
+                    if let item = item {
+                        output.append(item)
+                    }
+                    
+                })
+                
+            }
+            
+        }
+        
+        dispatchGroup.wait()
+        
+        return output
+        
+    }
+    
+    private func updateSharingItemSwitch() {
+        
+        sharingItemSwitch.removeAllSegments()
+        
+        sharingItems.enumerated().forEach { (index, item) in
+            sharingItemSwitch.insertSegment(withTitle: item.type, at: index, animated: false)
+        }
+        
+        assert(sharingItemSwitch.numberOfSegments == sharingItems.count)
+        
+        sharingItemSwitch.initializeSelectedIndexIfNeeded()
+        sharingItemSwitch.showOrHideAccordingToNumberOfSegments()
+        
+        switchSegment(sender: sharingItemSwitch)
+        
+    }
+    
+}
+
+extension Sequence {
+    
+    func first <Output> (compacted transform: (Element) throws -> Output?) rethrows -> Output? {
+        var iterator = makeIterator()
+        while let next = iterator.next() {
+            if let output = try transform(next) {
+                return output
+            }
+        }
+        return nil
+    }
+    
+}
+
+private extension UISegmentedControl {
+    
+    func initializeSelectedIndexIfNeeded() {
+        
+        if numberOfSegments > 0, selectedSegmentIndex < 0 {
+            selectedSegmentIndex = 0
+        }
+        
+    }
+    
+    func showOrHideAccordingToNumberOfSegments() {
+        
+        if numberOfSegments <= 1 {
+            isHidden = true
+            
+        } else {
+            isHidden = false
+        }
+        
+    }
+    
 }
