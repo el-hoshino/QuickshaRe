@@ -30,6 +30,8 @@ class QuickshaReUITests: XCTestCase {
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let textField = app.textFields["Type here to input text"]
+        XCTAssertTrue(textField.exists)
     }
 
     func testLaunchPerformance() {
