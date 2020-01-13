@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let contentView = NavigationView(content: { TextInputView() })
+            .workaroundOnRegularSizeClass()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -62,3 +63,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+private extension NavigationView {
+    
+    // Seems that currently SwiftUI has a bug that it won't show master view by default
+    // So here's a workaround↓
+    // Ref: https://stackoverflow.com/questions/57888032/swiftui-navigation-on-ipad-how-to-show-master-list
+    func workaroundOnRegularSizeClass() -> some View {
+        return navigationViewStyle(DoubleColumnNavigationViewStyle()).padding()
+    }
+    
+}
