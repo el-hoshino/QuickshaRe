@@ -13,7 +13,11 @@ final public class QRPictureGenerator {
     
     let context = CIContext()
     
+    private let dummy :Int = 123
+    
     public func qrPicture(for text: String) -> Picture {
+        
+        let dummy = 123
         
         let ciGenerator = CIFilter.qrCodeGenerator()
         let qrCode = ciGenerator.qrCodeImage(for: text, correctionLevel: "H")!
