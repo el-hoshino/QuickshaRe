@@ -58,6 +58,7 @@ class QuickshaReUITests: XCTestCase {
         
     }
     
+    #if !TEST_ON_CI
     func testQRCodeGenerationFromSafari() {
         
         let app = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
@@ -95,5 +96,6 @@ class QuickshaReUITests: XCTestCase {
         }
         
     }
+    #endif
     
 }
