@@ -241,6 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 797AF66B23A7E0CB00E41949 /* Build configuration list for PBXNativeTarget "QuickshaRe" */;
 			buildPhases = (
+				79FB0FEB23D382950078DFD8 /* Run SwiftLint */,
 				797AF63D23A7E0C800E41949 /* Sources */,
 				797AF63E23A7E0C800E41949 /* Frameworks */,
 				797AF63F23A7E0C800E41949 /* Resources */,
@@ -390,6 +391,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79FB0FEB23D382950078DFD8 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which mint >/dev/null; then\n  mint install realm/SwiftLint\n  mint run swiftlint\nelse\n  echo \"warning: Mint not installed. Run bootstrap.sh script first.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		797AF63D23A7E0C800E41949 /* Sources */ = {
