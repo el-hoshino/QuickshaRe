@@ -17,6 +17,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-RN-oga">
                                 <rect key="frame" x="0.0" y="94" width="414" height="414"/>
+                                <accessibility key="accessibilityConfiguration" identifier="QR Image"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fAS-RN-oga" secondAttribute="height" multiplier="1:1" id="WHt-py-gjQ"/>
                                 </constraints>
@@ -50,6 +51,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Share View"/>
                         <constraints>
                             <constraint firstItem="fAS-RN-oga" firstAttribute="top" secondItem="e5H-m0-X8Y" secondAttribute="bottom" constant="20" id="5gG-hH-bFh"/>
                             <constraint firstItem="ECN-yN-efG" firstAttribute="centerX" secondItem="1Xd-am-t49" secondAttribute="centerX" id="6SX-xt-X0L"/>

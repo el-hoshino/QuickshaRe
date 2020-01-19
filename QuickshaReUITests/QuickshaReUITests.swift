@@ -7,37 +7,95 @@
 //
 
 import XCTest
+import CoreImage
 
 class QuickshaReUITests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
+    
+    func testQRCodeGenerationFromMainApp() {
+        
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+        
+        let inputTextField = app.textFields["Type here to input text"]
+        let generateButton = app.buttons["Generate"]
+        
+        XCTContext.runActivity(named: "Check initial screen") { activity -> Void in
+            
+            XCTAssert(inputTextField.exists)
+            XCTAssert(generateButton.exists)
+            
+            let screenshot = app.screenshot()
+            let attachment = XCTAttachment(screenshot: screenshot)
+            activity.add(attachment)
+            
         }
+        
+        let testMessage = "Share any text via QR Code!"
+        
+        XCTContext.runActivity(named: "Check text input") { _ -> Void in
+            
+            inputTextField.tap()
+            inputTextField.typeText(testMessage)
+            generateButton.tap()
+            
+        }
+        
+        let label = app.staticTexts[testMessage]
+        
+        XCTContext.runActivity(named: "Check QR Code output") { activity -> Void in
+            
+            XCTAssert(label.waitForExistence(timeout: 2))
+            
+            let screenshot = app.screenshot()
+            let attachment = XCTAttachment(screenshot: screenshot)
+            activity.add(attachment)
+            
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil)!
+            let features = detector.features(in: CIImage(image: screenshot.image)!) as! [CIQRCodeFeature] //swiftlint:disable:this force_cast
+            XCTAssertEqual(features[0].messageString, testMessage)
+            
+        }
+        
     }
+    
+    #if !TEST_ON_CI
+    func testQRCodeGenerationFromSafari() {
+        
+        let app = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+        app.launch()
+        
+        XCTContext.runActivity(named: "Go to about:blank page") { _ -> Void in
+            let urlBar = app.otherElements["topBrowserBar"]
+            urlBar.tap()
+            let urlField = urlBar.textFields["URL"]
+            urlField.typeText("about:blank")
+            app.buttons["Go"].tap()
+        }
+        
+        XCTContext.runActivity(named: "Call Share menu") { _ -> Void in
+            let shareButton = app.buttons["Share"]
+            shareButton.tap()
+        }
+        
+        XCTContext.runActivity(named: "Open QuickshaRe") { _ -> Void in
+            // For some reason it seems impossible to properly specify the correct QuickshaRe button by text, so I can only specify it by index and pray that it can work on CI
+            // Ref: https://gist.github.com/AvdLee/719b2de80d74fc503ca1c64a23706d93#gistcomment-3142859
+            let shareList = app.otherElements["ActivityListView"]
+            XCTAssert(shareList.waitForExistence(timeout: 2))
+            let button = shareList.cells.matching(identifier: "Activity").allElementsBoundByIndex[1]
+            button.tap()
+        }
+        
+        XCTContext.runActivity(named: "Check label and image display") { _ -> Void in
+            let view = app.otherElements["Share View"]
+            let label = view.staticTexts["about:blank"]
+            let image = view.images["QR Image"]
+            XCTAssert(view.waitForExistence(timeout: 2))
+            XCTAssert(label.exists)
+            XCTAssert(image.exists)
+        }
+        
+    }
+    #endif
+    
 }

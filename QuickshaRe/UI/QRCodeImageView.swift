@@ -13,7 +13,7 @@ struct QRCodeImageView: View {
     
     private let generator = QRPictureGenerator()
     
-    @State var content: String
+    @Binding var content: String
     
     var body: some View {
         VStack {
@@ -33,11 +33,11 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             
             NavigationView {
-                QRCodeImageView(content: "https://github.com/el-hoshino/QuickshaRe")
+                QRCodeImageView(content: .constant("https://github.com/el-hoshino/QuickshaRe"))
             }.environment(\.colorScheme, .light)
             
             NavigationView {
-                QRCodeImageView(content: "https://github.com/el-hoshino/QuickshaRe")
+                QRCodeImageView(content: .constant("https://github.com/el-hoshino/QuickshaRe"))
             }.environment(\.colorScheme, .dark)
             
         }
