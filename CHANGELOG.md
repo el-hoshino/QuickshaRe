@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Text binding failure between the input view and the output view. This may be crucial on iPad.
 
+### Enhanced
+
+- A better CI/CD environment with SwiftLint and Danger
+
 ## [1.0.0] - 2020-01-12
 
 - Initial release.
