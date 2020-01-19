@@ -79,7 +79,6 @@ end
 def info_plist_has_been_modified
     
     modified = git.modified_files.include?(info_plist_path)
-    
     return modified
     
 end
@@ -89,6 +88,21 @@ def changelog_has_been_modified
     
     modified = git.modified_files.include?(changelog_path)
     return modified
+    
+end
+
+# Modification check for Marketing Version variable
+def marketing_version_has_been_modified
+    
+    project_setting_file_path = xcodeproj_path + "/project.pbxproj"
+    project_setting_file_diff = git.diff_for_file(project_setting_file_path)
+    if project_setting_file_diff
+        project_setting_file_diff.patch.lines.each do |line|
+            if line.include?("MARKETING_VERSION = ")
+                return true
+            end
+        end
+    end
     
 end
 
@@ -176,12 +190,13 @@ def release_modification_check_into_result(result)
     ## Required to update Info.plist.
     result.message << "Info.plist Modification Check |"
     has_info_plist_modification = info_plist_has_been_modified
+    has_marketing_version_modification = marketing_version_has_been_modified
     
-    if has_info_plist_modification
+    if has_info_plist_modification || has_marketing_version_modification
         result.message += ":heavy_exclamation_mark:\n"
-        warn "This is a release PR. Please check if Info.plist is correctly updated."
+        warn "This is a release PR. Please check if app version is correctly updated."
     else
-        fail "This is a release PR but Info.plist isn't updated, which is required."
+        fail "This is a release PR but app version isn't updated, which is required."
         result.message += ":x:\n"
         result.errors += 1
     end
