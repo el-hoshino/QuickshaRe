@@ -51,7 +51,7 @@ class QuickshaReUITests: XCTestCase {
             activity.add(attachment)
             
             let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil)!
-            let features = detector.features(in: CIImage(image: screenshot.image)!) as! [CIQRCodeFeature]
+            let features = detector.features(in: CIImage(image: screenshot.image)!) as! [CIQRCodeFeature] //swiftlint:disable:this force_cast
             XCTAssertEqual(features[0].messageString, testMessage)
             
         }
