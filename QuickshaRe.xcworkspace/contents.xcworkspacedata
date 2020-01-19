@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:"
+      name = "Environment">
+      <FileRef
+         location = "group:bootstrap.sh">
+      </FileRef>
+      <FileRef
+         location = "group:Mintfile">
+      </FileRef>
+      <FileRef
+         location = "group:.swiftlint.yml">
+      </FileRef>
+      <FileRef
+         location = "group:Dangerfile"
+         assignedFileDataType = "public.ruby-script">
+      </FileRef>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:CHANGELOG.md">
+      </FileRef>
+      <FileRef
+         location = "group:LICENSE">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:QuickshaRe.xcodeproj">
+   </FileRef>
+</Workspace>
