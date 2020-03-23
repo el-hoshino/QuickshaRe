@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Close button in share menu is now changed to xmark.circle.fill symbol with a more monochrome tint color.
+- Segment switch in share menu is now changed to hidden state initially.
 
 ## [1.0.1] - 2020-01-19
 
