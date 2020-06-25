@@ -27,6 +27,7 @@ struct TextInputView: View {
         }
         .padding(6)
         .offset(y: -100)
+        .navigationBarTitle("Input")
     }
     
     private func endEditing(from source: Any?) {
