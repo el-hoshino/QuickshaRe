@@ -20,7 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = NavigationView(content: { TextInputView() })
+        let contentView = NavigationView(content: {
+            TextInputView()
+            Text("Input text from navigation bar to generate QR code image 😘")
+        })
             .workaroundOnRegularSizeClass()
 
         // Use a UIHostingController as window root view controller.
