@@ -19,7 +19,7 @@ struct TextInputView: View {
                       text: $inputText,
                       onCommit: { [self] in self.endEditing(from: self) })
                 .underline()
-            NavigationLink(destination: QRCodeImageView(content: $inputText),
+            NavigationLink(destination: QRCodeImageView(content: inputText),
                            label: { Text("Generate") })
                 .padding(5)
                 .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
@@ -27,6 +27,7 @@ struct TextInputView: View {
         }
         .padding(6)
         .offset(y: -100)
+        .navigationBarTitle("Input")
     }
     
     private func endEditing(from source: Any?) {
