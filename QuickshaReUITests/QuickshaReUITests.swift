@@ -65,7 +65,7 @@ class QuickshaReUITests: XCTestCase {
         app.launch()
         
         XCTContext.runActivity(named: "Go to about:blank page") { _ -> Void in
-            let urlBar = app.otherElements["topBrowserBar"]
+            let urlBar = app.otherElements["TopBrowserBar"]
             urlBar.tap()
             let urlField = urlBar.textFields["URL"]
             urlField.typeText("about:blank")
