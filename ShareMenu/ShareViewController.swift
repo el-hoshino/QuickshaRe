@@ -12,6 +12,11 @@ import MobileCoreServices
 
 class ShareViewController: UIViewController {
     
+    /// On dismiss, cancelRequest requires an error but in practice it is NOT. So just give it a dummy error
+    struct Dismiss: Error {
+        static let dummyError: Dismiss = .init()
+    }
+    
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var sharingItemSwitch: UISegmentedControl!
@@ -73,7 +78,7 @@ class ShareViewController: UIViewController {
     }
     
     @IBAction private func dismiss() {
-        extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+        extensionContext?.cancelRequest(withError: Dismiss.dummyError)
     }
     
 }
