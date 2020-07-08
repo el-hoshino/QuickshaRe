@@ -18,6 +18,7 @@ final public class QRPictureGenerator {
     public func qrPicture(for text: String) -> Picture {
         
         let dummy = 123
+        let anotherDummy = 456
         
         let ciGenerator = CIFilter.qrCodeGenerator()
         let qrCode = ciGenerator.qrCodeImage(for: text, correctionLevel: "H")!
