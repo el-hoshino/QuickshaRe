@@ -13,7 +13,7 @@ final public class QRPictureGenerator {
     
     let context = CIContext()
     
-    private let dummy :Int = 123
+    private let dummy: Int = 123
     
     public func qrPicture(for text: String) -> Picture {
         
