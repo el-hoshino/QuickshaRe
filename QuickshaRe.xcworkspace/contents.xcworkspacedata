@@ -14,8 +14,7 @@
          location = "group:.swiftlint.yml">
       </FileRef>
       <FileRef
-         location = "group:Dangerfile"
-         assignedFileDataType = "public.ruby-script">
+         location = "group:Dangerfile.swift">
       </FileRef>
       <FileRef
          location = "group:README.md">
