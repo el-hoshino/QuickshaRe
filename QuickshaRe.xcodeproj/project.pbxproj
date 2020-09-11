@@ -25,6 +25,7 @@
 		79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DB0FBA23CA06430040E275 /* MainInterface.storyboard */; };
 		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF349F8D250C16360083B498 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = BF349F8C250C16360083B498 /* ViewInspector */; };
+		BF349F8F250C16810083B498 /* TextInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF349F8E250C16810083B498 /* TextInputViewTests.swift */; };
 		BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96013B23C6FC040034CE20 /* TextInputView.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		79DB0FB823CA06430040E275 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		79DB0FBB23CA06430040E275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		79DB0FBD23CA06430040E275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF349F8E250C16810083B498 /* TextInputViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewTests.swift; sourceTree = "<group>"; };
 		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */,
+				BF349F8E250C16810083B498 /* TextInputViewTests.swift */,
 				797AF65D23A7E0CB00E41949 /* Info.plist */,
 			);
 			path = QuickshaReTests;
@@ -445,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF349F8F250C16810083B498 /* TextInputViewTests.swift in Sources */,
 				797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
