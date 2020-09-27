@@ -500,44 +500,4 @@ private extension ProcessInfo {
 // MARK: - Check routine
 let danger = Danger()
 
-// If there's any modification in bootstrap.sh file, ask the reviewer to check if he needs to update Bitrise workflows.
-if danger.hasBrewfileBeenModified {
-    markdown("- [ ] Check bitrise workflow")
-    warn("There's modification in bootstrap.sh file. Please remember to check if needed to update Bitrise workflow.")
-}
-
-// If the head branch refers to a GitHub issue, comment it in the PR page.
-if let githubIssue = danger.githubIssue {
-    message("Resolve #\(githubIssue)")
-}
-
-// SwiftLint format check.
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
-
-// Xcode summary warnings check.
-XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
-
-// Xcode test coverage check.
-Coverage.xcodeBuildCoverage(.xcresultBundle(ProcessInfo.xcTestResultPath), minimumCoverage: 60)
-
-// PR routine check.
-do {
-    let result = try danger.checkPR()
-    markdown(result.markdownTitle)
-    
-    if !result.markdownMessage.isEmpty {
-        markdown(result.markdownMessage)
-    }
-    
-    if !result.markdownTodos.isEmpty {
-        markdown(result.markdownTodos)
-    }
-    
-    if result.warningsCount == 0 && result.errorsCount == 0 {
-        message("Well Done :white_flower:")
-    }
-    
-} catch {
-    fail("Failed to find out the correct check routine. Please check if your PR is created from or into a correct branch.")
-}
-
+fail("danger fail test")
