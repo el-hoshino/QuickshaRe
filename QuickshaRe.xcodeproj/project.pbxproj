@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,8 @@
 		79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB0FB823CA06430040E275 /* ShareViewController.swift */; };
 		79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DB0FBA23CA06430040E275 /* MainInterface.storyboard */; };
 		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF349F8D250C16360083B498 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = BF349F8C250C16360083B498 /* ViewInspector */; };
+		BF349F8F250C16810083B498 /* TextInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF349F8E250C16810083B498 /* TextInputViewTests.swift */; };
 		BF96013C23C6FC040034CE20 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96013B23C6FC040034CE20 /* TextInputView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,7 @@
 		79DB0FB823CA06430040E275 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		79DB0FBB23CA06430040E275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		79DB0FBD23CA06430040E275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF349F8E250C16810083B498 /* TextInputViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewTests.swift; sourceTree = "<group>"; };
 		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF349F8D250C16360083B498 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				797AF65B23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift */,
+				BF349F8E250C16810083B498 /* TextInputViewTests.swift */,
 				797AF65D23A7E0CB00E41949 /* Info.plist */,
 			);
 			path = QuickshaReTests;
@@ -257,6 +262,8 @@
 				79DB0FBF23CA06430040E275 /* PBXTargetDependency */,
 			);
 			name = QuickshaRe;
+			packageProductDependencies = (
+			);
 			productName = QuickshaRe;
 			productReference = 797AF64123A7E0C800E41949 /* QuickshaRe.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +282,9 @@
 				797AF65923A7E0CB00E41949 /* PBXTargetDependency */,
 			);
 			name = QuickshaReTests;
+			packageProductDependencies = (
+				BF349F8C250C16360083B498 /* ViewInspector */,
+			);
 			productName = QuickshaReTests;
 			productReference = 797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -349,6 +359,9 @@
 				Base,
 			);
 			mainGroup = 797AF63823A7E0C800E41949;
+			packageReferences = (
+				BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 797AF64223A7E0C800E41949 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -435,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF349F8F250C16810083B498 /* TextInputViewTests.swift in Sources */,
 				797AF65C23A7E0CB00E41949 /* QRPictoreGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,6 +858,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF349F8C250C16360083B498 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 797AF63923A7E0C800E41949 /* Project object */;
 }
