@@ -426,7 +426,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which mint >/dev/null; then\n  mint install realm/SwiftLint\n  mint run swiftlint\nelse\n  echo \"warning: Mint not installed. Run bootstrap.sh script first.\"\nfi\n";
+			shellScript = "if which mint >/dev/null; then\n  mint install realm/SwiftLint\n  mint run swiftlint --config swiftlint.yml\nelse\n  echo \"warning: Mint not installed. Run bootstrap.sh script first.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

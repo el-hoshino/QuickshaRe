@@ -11,7 +11,7 @@
          location = "group:Mintfile">
       </FileRef>
       <FileRef
-         location = "group:.swiftlint.yml">
+         location = "group:swiftlint.yml">
       </FileRef>
       <FileRef
          location = "group:Dangerfile.swift">
