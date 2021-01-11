@@ -15,12 +15,16 @@ struct TextInputView: View {
     
     var body: some View {
         HStack {
-            TextField("Type here to input text",
-                      text: $inputText,
-                      onCommit: { [self] in self.endEditing(from: self) })
+            TextField(
+                "Type here to input text",
+                text: $inputText,
+                onCommit: { [self] in self.endEditing(from: self) }
+            )
                 .underline()
-            NavigationLink(destination: QRCodeImageView(content: inputText),
-                           label: { Text("Generate") })
+            NavigationLink(
+                destination: QRCodeImageView(content: inputText),
+                label: { Text("Generate") }
+            )
                 .padding(5)
                 .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
                 .disabled(inputText.isEmpty)
