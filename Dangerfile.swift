@@ -512,7 +512,7 @@ if let githubIssue = danger.githubIssue {
 }
 
 // SwiftLint format check.
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
+SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml")
 
 // Xcode summary warnings check.
 XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
