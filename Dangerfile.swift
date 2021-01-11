@@ -5,6 +5,7 @@ import DangerSwiftCoverage // package: https://github.com/f-meloni/danger-swift-
 import DangerSwiftHammer // package: https://github.com/el-hoshino/DangerSwiftHammer.git
 
 // swiftlint:disable file_length function_body_length
+// swiftlint:disable optional_default_value
 
 // MARK: - Variables those may change according to each project
 
@@ -162,8 +163,8 @@ extension DangerDSL {
     }
     
     var isReleasePR: Bool {
-        // Treat PRs merging into master branch as a release PR
-        baseBranch == "master"
+        // Treat PRs merging into main branch as a release PR
+        baseBranch == "main"
     }
     
 }
@@ -174,7 +175,7 @@ extension DangerDSL {
     
     enum BranchType {
         
-        case master
+        case main
         case develop
         case feature
         case refactor
@@ -185,8 +186,8 @@ extension DangerDSL {
         
         static func parsed(from branchName: String) -> BranchType? {
             switch branchName {
-            case "master":
-                return .master
+            case "main":
+                return .main
                 
             case "develop":
                 return .develop
@@ -361,7 +362,7 @@ extension DangerDSL {
         // The volume of diff should not be over 1,000 lines.
         let doDiffAmountCheckTitle = "Diff Volume Check"
         result.check(doDiffAmountCheckTitle) {
-            if diffLinesCount <= 1000 {
+            if diffLinesCount <= 1_000 {
                 return .good
                 
             } else {
@@ -403,14 +404,14 @@ extension DangerDSL {
             }
         }
 
-        // Develop PR should be created into master branch
+        // Develop PR should be created into main branch
         let doBaseBranchCheckTitle = "PR Base Branch Check"
         result.check(doBaseBranchCheckTitle) {
-            if isBaseBranch(.master) {
+            if isBaseBranch(.main) {
                 return .good
                 
             } else {
-                fail("Please create a release PR into master branch.")
+                fail("Please create a release PR into main branch.")
                 return .rejected
             }
         }
@@ -512,7 +513,7 @@ if let githubIssue = danger.githubIssue {
 }
 
 // SwiftLint format check.
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true)
+SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml")
 
 // Xcode summary warnings check.
 XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
@@ -540,4 +541,3 @@ do {
 } catch {
     fail("Failed to find out the correct check routine. Please check if your PR is created from or into a correct branch.")
 }
-
