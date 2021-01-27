@@ -22,7 +22,10 @@ struct TextInputView: View {
             )
                 .underline()
             NavigationLink(
-                destination: QRCodeImageView(content: inputText),
+                destination: QRCodeImageView(
+                    generator: QRPictureGenerator(),
+                    content: inputText
+                ),
                 label: { Text("Generate") }
             )
                 .padding(5)

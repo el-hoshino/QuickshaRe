@@ -9,11 +9,16 @@
 import SwiftUI
 import Combine
 
-struct QRCodeImageView: View {
+struct QRCodeImageView<CodeGenerator: QRCodeGeneratorObject>: View {
     
-    private let generator = QRPictureGenerator()
+    private let generator: CodeGenerator
     
     var content: String
+    
+    init(generator: CodeGenerator, content: String) {
+        self.generator = generator
+        self.content = content
+    }
     
     var body: some View {
         VStack {
@@ -28,16 +33,23 @@ struct QRCodeImageView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
         
         Group {
             
             NavigationView {
-                QRCodeImageView(content: "https://github.com/el-hoshino/QuickshaRe")
+                QRCodeImageView(
+                    generator: QRPictureGenerator(),
+                    content: "https://github.com/el-hoshino/QuickshaRe"
+                )
             }.environment(\.colorScheme, .light)
             
             NavigationView {
-                QRCodeImageView(content: "https://github.com/el-hoshino/QuickshaRe")
+                QRCodeImageView(
+                    generator: QRPictureGenerator(),
+                    content: "https://github.com/el-hoshino/QuickshaRe"
+                )
             }.environment(\.colorScheme, .dark)
             
         }
