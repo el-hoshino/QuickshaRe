@@ -9,9 +9,14 @@
 import SwiftUI
 import Combine
 
-struct TextInputView: View {
+protocol TextInputManagerObject: ObservableObject {
+    var inputText: String { get set }
+}
+
+struct TextInputView<InputManager: TextInputManagerObject>: View {
     
-    @State var inputText: String = ""
+    @StateObject private var inputManager: InputManager
+    @State private var inputText: String = ""
     
     var body: some View {
         HStack {
@@ -36,6 +41,7 @@ struct TextInputView: View {
     }
     
     private func endEditing(from source: Any?) {
+        inputManager.inputText = inputText
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: source, for: nil)
     }
     
