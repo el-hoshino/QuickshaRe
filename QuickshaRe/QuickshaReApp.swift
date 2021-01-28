@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct QuickshaReApp: App {
+    
+    @StateObject private var inputManager = TextInputManager()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView(content: {
-                TextInputView()
+                TextInputView(inputManager: inputManager)
                 Text("Input text from navigation bar to generate QR code image 😘")
             })
         }
     }
+    
 }

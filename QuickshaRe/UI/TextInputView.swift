@@ -15,7 +15,7 @@ protocol TextInputManagerObject: ObservableObject {
 
 struct TextInputView<InputManager: TextInputManagerObject>: View {
     
-    @StateObject private var inputManager: InputManager
+    @ObservedObject var inputManager: InputManager
     @State private var inputText: String = ""
     
     var body: some View {
@@ -46,7 +46,7 @@ struct TextInputView<InputManager: TextInputManagerObject>: View {
     }
     
     private func makeQRCodeImageView() -> some View {
-        return QRCodeImageView(generator: QRPictureGenerator(), content: inputText)
+        return QRCodeImageView(generator: QRPictureGenerator(), content: inputManager.inputText)
     }
     
 }
@@ -72,16 +72,19 @@ extension View {
 }
 
 struct TextInputView_Previews: PreviewProvider {
+    
+    private static let inputManager = TextInputManager()
+    
     static var previews: some View {
         
         Group {
             
             NavigationView {
-                TextInputView()
+                TextInputView(inputManager: inputManager)
             }.environment(\.colorScheme, .light)
             
             NavigationView {
-                TextInputView()
+                TextInputView(inputManager: inputManager)
             }.environment(\.colorScheme, .dark)
             
         }
