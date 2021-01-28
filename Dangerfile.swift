@@ -1,7 +1,7 @@
 import Foundation
 import Danger
 
-for commit in Danger().github.commits {
+for commit in Danger().git.commits {
     message("\(commit)")
     message("==")
 }
