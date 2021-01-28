@@ -21,9 +21,10 @@ struct TextInputView: View {
                 onCommit: { [self] in self.endEditing(from: self) }
             )
                 .underline()
+            
             NavigationLink(
-                destination: QRCodeImageView(content: inputText),
-                label: { Text("Generate") }
+                "Generate",
+                destination: makeQRCodeImageView()
             )
                 .padding(5)
                 .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
@@ -36,6 +37,10 @@ struct TextInputView: View {
     
     private func endEditing(from source: Any?) {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: source, for: nil)
+    }
+    
+    private func makeQRCodeImageView() -> some View {
+        return QRCodeImageView(generator: QRPictureGenerator(), content: inputText)
     }
     
 }

@@ -12,6 +12,10 @@ public final class QRPictureGenerator {
     
     let context = CIContext()
     
+}
+
+extension QRPictureGenerator: QRCodeGeneratorObject {
+    
     public func qrPicture(for text: String) -> Picture {
         
         let ciGenerator = CIFilter.qrCodeGenerator()

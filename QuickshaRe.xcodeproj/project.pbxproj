@@ -21,6 +21,8 @@
 		79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB0FB823CA06430040E275 /* ShareViewController.swift */; };
 		79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DB0FBA23CA06430040E275 /* MainInterface.storyboard */; };
 		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF08EEE125C1CE01002B1AF8 /* QRCodeGeneratorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF08EEE025C1CE01002B1AF8 /* QRCodeGeneratorObject.swift */; };
+		BF08EEE225C1CE01002B1AF8 /* QRCodeGeneratorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF08EEE025C1CE01002B1AF8 /* QRCodeGeneratorObject.swift */; };
 		BF349F8D250C16360083B498 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = BF349F8C250C16360083B498 /* ViewInspector */; };
 		BF349F8F250C16810083B498 /* TextInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF349F8E250C16810083B498 /* TextInputViewTests.swift */; };
 		BF7AB87925AC6588006DEE77 /* QuickshaReApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AB87825AC6588006DEE77 /* QuickshaReApp.swift */; };
@@ -87,6 +89,7 @@
 		79DB0FB823CA06430040E275 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		79DB0FBB23CA06430040E275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		79DB0FBD23CA06430040E275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF08EEE025C1CE01002B1AF8 /* QRCodeGeneratorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorObject.swift; sourceTree = "<group>"; };
 		BF349F8E250C16810083B498 /* TextInputViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewTests.swift; sourceTree = "<group>"; };
 		BF7AB87825AC6588006DEE77 /* QuickshaReApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickshaReApp.swift; sourceTree = "<group>"; };
 		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		791EE71823C6239100AFFB30 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				BF08EEE025C1CE01002B1AF8 /* QRCodeGeneratorObject.swift */,
 				791EE71923C623BF00AFFB30 /* QRPictureGenerator.swift */,
 			);
 			path = Domain;
@@ -432,6 +436,7 @@
 				791EE71A23C623BF00AFFB30 /* QRPictureGenerator.swift in Sources */,
 				BF7AB87925AC6588006DEE77 /* QuickshaReApp.swift in Sources */,
 				797AF64923A7E0C800E41949 /* QRCodeImageView.swift in Sources */,
+				BF08EEE125C1CE01002B1AF8 /* QRCodeGeneratorObject.swift in Sources */,
 				791EE71D23C623FB00AFFB30 /* Picture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +464,7 @@
 			files = (
 				798FC31623CA079500ACB7F5 /* Picture.swift in Sources */,
 				79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */,
+				BF08EEE225C1CE01002B1AF8 /* QRCodeGeneratorObject.swift in Sources */,
 				798FC31523CA078F00ACB7F5 /* QRPictureGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
