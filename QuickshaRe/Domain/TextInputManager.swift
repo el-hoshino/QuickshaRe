@@ -10,7 +10,7 @@ import Foundation
 
 public final class TextInputManager {
     
-    private var inputTextHistory: [String] = []
+    @Published private var inputTextHistory: [String] = []
     
 }
 
