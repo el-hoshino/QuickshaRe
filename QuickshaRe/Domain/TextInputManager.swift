@@ -7,10 +7,31 @@
 //
 
 import Foundation
+import Combine
 
 public final class TextInputManager {
     
-    @Published private var inputTextHistory: [String] = []
+    @Published private var current: String?
+    @Published private var history: [String] = []
+    
+    private var cancellablesSet: Set<AnyCancellable> = []
+    
+    init() {
+        let historySubscription = $current
+            .compactMap({ $0 })
+            .debounce(for: 1, scheduler: RunLoop.current)
+            .removeDuplicates()
+            .sink(receiveValue: { [unowned self] newValue in
+                self.history.keep(first: 99)
+                self.history.append(newValue)
+            })
+        self.cancellablesSet.insert(historySubscription)
+        
+        let test = $history.sink { (newValue) in
+            print(newValue)
+        }
+        self.cancellablesSet.insert(test)
+    }
     
 }
 
@@ -18,13 +39,10 @@ extension TextInputManager: TextInputManagerObject {
     
     var inputText: String {
         get {
-            return inputTextHistory.last ?? "" // swiftlint:disable:this optional_default_value
+            return current ?? "" // swiftlint:disable:this optional_default_value
         }
         set {
-            guard !newValue.isEmpty && newValue != inputTextHistory.last else {
-                return
-            }
-            inputTextHistory.append(newValue)
+            current = newValue
         }
     }
     

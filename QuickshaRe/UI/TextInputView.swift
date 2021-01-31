@@ -15,25 +15,29 @@ protocol TextInputManagerObject: ObservableObject {
 
 struct TextInputView<InputManager: TextInputManagerObject>: View {
     
-    @ObservedObject var inputManager: InputManager
-    @State private var inputText: String = ""
+    
+    @ObservedObject private var inputManager: InputManager
+    
+    init(inputManager: InputManager) {
+        self.inputManager = inputManager
+    }
     
     var body: some View {
         HStack {
             TextField(
                 "Type here to input text",
-                text: $inputText,
+                text: $inputManager.inputText,
                 onCommit: { [self] in self.endEditing(from: self) }
             )
-                .underline()
+            .underline()
             
             NavigationLink(
                 "Generate",
                 destination: makeQRCodeImageView()
             )
-                .padding(5)
-                .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
-                .disabled(inputText.isEmpty)
+            .padding(5)
+            .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
+            .disabled(inputManager.inputText.isEmpty)
         }
         .padding(6)
         .offset(y: -100)
@@ -41,7 +45,6 @@ struct TextInputView<InputManager: TextInputManagerObject>: View {
     }
     
     private func endEditing(from source: Any?) {
-        inputManager.inputText = inputText
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: source, for: nil)
     }
     
@@ -73,7 +76,14 @@ extension View {
 
 struct TextInputView_Previews: PreviewProvider {
     
-    private static let inputManager = TextInputManager()
+    private final class MockInputManager: TextInputManagerObject {
+        var inputText: String
+        init() {
+            self.inputText = "Preview Text"
+        }
+    }
+    
+    private static let inputManager = MockInputManager()
     
     static var previews: some View {
         
