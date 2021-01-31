@@ -15,7 +15,6 @@ protocol TextInputManagerObject: ObservableObject {
 
 struct TextInputView<InputManager: TextInputManagerObject>: View {
     
-    
     @ObservedObject private var inputManager: InputManager
     
     init(inputManager: InputManager) {
