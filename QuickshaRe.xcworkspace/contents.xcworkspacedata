@@ -5,7 +5,7 @@
       location = "group:"
       name = "Environment">
       <FileRef
-         location = "group:bootstrap.sh">
+         location = "group:Makefile">
       </FileRef>
       <FileRef
          location = "group:Mintfile">
@@ -24,6 +24,9 @@
       </FileRef>
       <FileRef
          location = "group:LICENSE">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/x_shi/Documents/Crazism/QuickshaRe/makefile_scripts">
       </FileRef>
    </Group>
    <FileRef
