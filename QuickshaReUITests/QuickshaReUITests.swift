@@ -36,7 +36,8 @@ class QuickshaReUITests: XCTestCase {
             
             inputTextField.tap()
             inputTextField.typeText(testMessage)
-            generateButton.tap()
+            // For some reason `generateButton.isHittable` becomes false which causes it unable to tap, so a little workaround for it.
+            generateButton.hitArea()
             
         }
         
@@ -97,5 +98,14 @@ class QuickshaReUITests: XCTestCase {
         
     }
     #endif
+    
+}
+
+private extension XCUIElement {
+    
+    func hitArea() {
+        let coordinate = coordinate(withNormalizedOffset: .zero)
+        coordinate.tap()
+    }
     
 }
