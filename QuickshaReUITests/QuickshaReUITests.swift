@@ -66,7 +66,7 @@ class QuickshaReUITests: XCTestCase {
         app.launch()
         
         XCTContext.runActivity(named: "Go to about:blank page") { _ -> Void in
-            let urlBar = app.otherElements["TopBrowserBar"]
+            let urlBar = app.otherElements["CapsuleNavigationBar?isSelected=true"]
             urlBar.tap()
             let urlField = urlBar.textFields["URL"]
             urlField.typeText("about:blank")
@@ -79,11 +79,11 @@ class QuickshaReUITests: XCTestCase {
         }
         
         XCTContext.runActivity(named: "Open QuickshaRe") { _ -> Void in
-            // For some reason it seems impossible to properly specify the correct QuickshaRe button by text, so I can only specify it by index and pray that it can work on CI
-            // Ref: https://gist.github.com/AvdLee/719b2de80d74fc503ca1c64a23706d93#gistcomment-3142859
             let shareList = app.otherElements["ActivityListView"]
             XCTAssert(shareList.waitForExistence(timeout: 2))
-            let button = shareList.cells.matching(identifier: "QuickshaRe").element
+            // For some reason it seems impossible to properly specify the correct QuickshaRe button by text, so I can only specify it by index and pray that it can work on CI
+            // Ref: https://gist.github.com/AvdLee/719b2de80d74fc503ca1c64a23706d93#gistcomment-3142859
+            let button = shareList.cells.allElementsBoundByIndex[2]
             button.tap()
         }
         
