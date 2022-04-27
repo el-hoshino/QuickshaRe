@@ -5,6 +5,9 @@
       location = "group:"
       name = "Environment">
       <FileRef
+         location = "group:SwiftPackages">
+      </FileRef>
+      <FileRef
          location = "group:Makefile">
       </FileRef>
       <FileRef
