@@ -328,7 +328,7 @@
 		797AF63923A7E0C800E41949 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Crazism;
 				TargetAttributes = {
