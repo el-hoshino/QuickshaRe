@@ -54,15 +54,6 @@
           "revision": "200046c93f6d5d78a6d72bfd9c0b27a95e9c0a2b",
           "version": "1.2.0"
         }
-      },
-      {
-        "package": "ViewInspector",
-        "repositoryURL": "https://github.com/nalexn/ViewInspector",
-        "state": {
-          "branch": null,
-          "revision": "3cc24dcbf317ebf963173518ffca70c567e3113e",
-          "version": "0.4.7"
-        }
       }
     ]
   },

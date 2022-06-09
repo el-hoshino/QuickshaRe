@@ -328,7 +328,7 @@
 		797AF63923A7E0C800E41949 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Crazism;
 				TargetAttributes = {
@@ -423,7 +423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which mint >/dev/null; then\n  mint install realm/SwiftLint\n  mint run swiftlint --config swiftlint.yml\nelse\n  echo \"warning: Mint not installed. Run bootstrap.sh script first.\"\nfi\n";
+			shellScript = "eval $MINT_EXECUTABLE run swiftlint --config swiftlint.yml\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -636,10 +636,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
+				MINT_EXECUTABLE = "eval $SWIFT_PACKAGES_PATH mint";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_PACKAGES_PATH = "xcrun -sdk macosx swift run --package-path SwiftPackages";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -660,10 +665,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
+				MINT_EXECUTABLE = "eval $SWIFT_PACKAGES_PATH mint";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_PACKAGES_PATH = "xcrun -sdk macosx swift run --package-path SwiftPackages";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
