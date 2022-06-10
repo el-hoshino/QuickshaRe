@@ -1,6 +1,6 @@
 import Foundation
 import Danger
-import DangerXCodeSummary // package: https://github.com/f-meloni/danger-swift-xcodesummary.git
+import DangerSwiftKantoku // package: https://github.com/yumemi-inc/danger-swift-kantoku.git
 import DangerSwiftCoverage // package: https://github.com/f-meloni/danger-swift-coverage.git
 import DangerSwiftHammer // package: https://github.com/el-hoshino/DangerSwiftHammer.git
 
@@ -516,7 +516,7 @@ if let githubIssue = danger.githubIssue {
 SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml")
 
 // Xcode summary warnings check.
-XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
+danger.kantoku.parseXCResultFile(at: ProcessInfo.xcTestResultPath, configuration: .default)
 
 // Xcode test coverage check.
 Coverage.xcodeBuildCoverage(.xcresultBundle(ProcessInfo.xcTestResultPath), minimumCoverage: 60)
