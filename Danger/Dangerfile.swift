@@ -1,8 +1,8 @@
 import Foundation
 import Danger
-import DangerSwiftKantoku // package: https://github.com/yumemi-inc/danger-swift-kantoku.git
-import DangerSwiftCoverage // package: https://github.com/f-meloni/danger-swift-coverage.git
-import DangerSwiftHammer // package: https://github.com/el-hoshino/DangerSwiftHammer.git
+import DangerSwiftKantoku
+import DangerSwiftCoverage
+import DangerSwiftHammer
 
 // swiftlint:disable file_length function_body_length
 // swiftlint:disable optional_default_value
@@ -449,23 +449,6 @@ private extension Git {
     
     var diffFiles: [File] {
         createdFiles + deletedFiles + modifiedFiles
-    }
-    
-}
-
-private extension XCodeSummary {
-    
-    convenience init(filePath: String, onlyShowSummaryInDiffFiles: Bool) {
-        if onlyShowSummaryInDiffFiles {
-            let diffFiles = Danger().git.diffFiles
-            self.init(filePath: filePath) { [diffFiles] in
-                guard let path = $0.file else { return false }
-                return diffFiles.contains(path)
-            }
-            
-        } else {
-            self.init(filePath: filePath)
-        }
     }
     
 }
