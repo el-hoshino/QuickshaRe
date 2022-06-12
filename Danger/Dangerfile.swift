@@ -1,8 +1,8 @@
 import Foundation
 import Danger
-import DangerXCodeSummary // package: https://github.com/f-meloni/danger-swift-xcodesummary.git
-import DangerSwiftCoverage // package: https://github.com/f-meloni/danger-swift-coverage.git
-import DangerSwiftHammer // package: https://github.com/el-hoshino/DangerSwiftHammer.git
+import DangerSwiftKantoku
+import DangerSwiftCoverage
+import DangerSwiftHammer
 
 // swiftlint:disable file_length function_body_length
 // swiftlint:disable optional_default_value
@@ -453,23 +453,6 @@ private extension Git {
     
 }
 
-private extension XCodeSummary {
-    
-    convenience init(filePath: String, onlyShowSummaryInDiffFiles: Bool) {
-        if onlyShowSummaryInDiffFiles {
-            let diffFiles = Danger().git.diffFiles
-            self.init(filePath: filePath) { [diffFiles] in
-                guard let path = $0.file else { return false }
-                return diffFiles.contains(path)
-            }
-            
-        } else {
-            self.init(filePath: filePath)
-        }
-    }
-    
-}
-
 private extension String {
     
     func substring <S: StringProtocol> (of string: S, options: CompareOptions) -> String? {
@@ -516,7 +499,7 @@ if let githubIssue = danger.githubIssue {
 SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml")
 
 // Xcode summary warnings check.
-XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
+danger.kantoku.parseXCResultFile(at: ProcessInfo.xcTestResultPath, configuration: .default)
 
 // Xcode test coverage check.
 Coverage.xcodeBuildCoverage(.xcresultBundle(ProcessInfo.xcTestResultPath), minimumCoverage: 60)

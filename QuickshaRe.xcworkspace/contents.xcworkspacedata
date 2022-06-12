@@ -7,6 +7,16 @@
       <FileRef
          location = "group:SwiftPackages">
       </FileRef>
+      <Group
+         location = "container:Danger"
+         name = "Danger">
+         <FileRef
+            location = "group:Dangerfile.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Package.swift">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:Makefile">
       </FileRef>
