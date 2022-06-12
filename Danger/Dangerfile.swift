@@ -471,6 +471,9 @@ private extension ProcessInfo {
     
     static var xcTestResultPath: String {
         
+        // If running on Xcode Cloud it should be able to get path from `$CI_RESULT_BUNDLE_PATH` variable
+        processInfo.environment["CI_RESULT_BUNDLE_PATH"] ??
+        
         // If running on Bitrise it should be able to get path from `$BITRISE_XCRESULT_PATH` variable
         processInfo.environment["BITRISE_XCRESULT_PATH"] ??
             
