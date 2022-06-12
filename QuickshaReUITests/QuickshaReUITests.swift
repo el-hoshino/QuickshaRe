@@ -74,7 +74,7 @@ class QuickshaReUITests: XCTestCase {
         }
         
         XCTContext.runActivity(named: "Call Share menu") { _ -> Void in
-            let shareButton = app.buttons["Share"]
+            let shareButton = app.buttons["ShareButton"]
             shareButton.tap()
         }
         
