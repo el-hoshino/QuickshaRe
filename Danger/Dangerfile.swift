@@ -514,7 +514,8 @@ SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFil
 danger.kantoku.parseXCResultFile(at: ProcessInfo.xcTestResultPath, configuration: .default)
 
 // Xcode test coverage check.
-Coverage.xcodeBuildCoverage(.xcresultBundle(ProcessInfo.xcTestResultPath), minimumCoverage: 60)
+// temporarily disable this because hasn't found a way to get coverage at post_xcodebuild yet
+//Coverage.xcodeBuildCoverage(.xcresultBundle(ProcessInfo.xcTestResultPath), minimumCoverage: 60)
 
 // PR routine check.
 do {
