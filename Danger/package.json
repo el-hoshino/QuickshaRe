@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "danger": ">=11.0.7"
+  },
+  "scripts" : {
+    "danger": "danger -V"
+  }
+}

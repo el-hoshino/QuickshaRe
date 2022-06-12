@@ -29,6 +29,9 @@
          <FileRef
             location = "group:Package.swift">
          </FileRef>
+         <FileRef
+            location = "group:package.json">
+         </FileRef>
       </Group>
       <FileRef
          location = "group:swiftlint.yml">
