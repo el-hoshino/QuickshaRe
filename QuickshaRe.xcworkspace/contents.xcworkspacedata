@@ -8,6 +8,19 @@
          location = "group:SwiftPackages">
       </FileRef>
       <Group
+         location = "group:ci_scripts"
+         name = "ci_scripts">
+         <FileRef
+            location = "group:ci_variables.sh">
+         </FileRef>
+         <FileRef
+            location = "group:ci_post_clone.sh">
+         </FileRef>
+         <FileRef
+            location = "group:ci_post_xcodebuild.sh">
+         </FileRef>
+      </Group>
+      <Group
          location = "container:Danger"
          name = "Danger">
          <FileRef
@@ -18,16 +31,7 @@
          </FileRef>
       </Group>
       <FileRef
-         location = "group:Makefile">
-      </FileRef>
-      <FileRef
-         location = "group:Mintfile">
-      </FileRef>
-      <FileRef
          location = "group:swiftlint.yml">
-      </FileRef>
-      <FileRef
-         location = "group:Dangerfile.swift">
       </FileRef>
       <FileRef
          location = "group:README.md">
@@ -37,9 +41,6 @@
       </FileRef>
       <FileRef
          location = "group:LICENSE">
-      </FileRef>
-      <FileRef
-         location = "group:/Users/x_shi/Documents/Crazism/QuickshaRe/makefile_scripts">
       </FileRef>
    </Group>
    <FileRef
