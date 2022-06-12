@@ -484,6 +484,15 @@ private extension ProcessInfo {
     
 }
 
+private extension SwiftLint.SwiftlintPath {
+    
+    static var installedBySwiftPM: Self {
+        let swiftPackagePath = "$(pwd)/SwiftPackages"
+        return .swiftPackage(swiftPackagePath)
+    }
+    
+}
+
 // MARK: - Check routine
 let danger = Danger()
 
@@ -499,7 +508,7 @@ if let githubIssue = danger.githubIssue {
 }
 
 // SwiftLint format check.
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml")
+SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml", swiftlintPath: .installedBySwiftPM)
 
 // Xcode summary warnings check.
 danger.kantoku.parseXCResultFile(at: ProcessInfo.xcTestResultPath, configuration: .default)
