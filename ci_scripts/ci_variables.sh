@@ -15,3 +15,15 @@ swift_package_build() {
 swift_package_run() {
     eval $_swift_exec run $_swift_package_path $@
 }
+
+danger_install() {
+    pushd ${DANGER_PATH}
+    brew install npm
+    npm install
+    swift build
+}
+
+danger_run() {
+    pushd ${DANGER_PATH}
+    swift run danger-swift ci --danger-js-path node_modules/.bin/danger --cwd ${PROJECT_PATH}
+}
