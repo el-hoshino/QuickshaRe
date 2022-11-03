@@ -23,9 +23,8 @@ class QRPictoreGeneratorTests: XCTestCase {
         add(attachment)
         
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil)!
-        let features = detector.features(in: CIImage(image: picture.uiImage)!)// as! [CIQRCodeFeature] // swiftlint:disable:this force_cast
-//        XCTAssertEqual(features[0].messageString, message)
-        XCTAssertFalse(features.isEmpty)
+        let features = detector.features(in: CIImage(image: picture.uiImage)!) as! [CIQRCodeFeature] // swiftlint:disable:this force_cast
+        XCTAssertEqual(features[0].messageString, message)
     }
     
 }
