@@ -17,6 +17,7 @@ swift_package_run() {
 }
 
 danger_install() {
+    cd ${PROJECT_PATH} ## test
     pushd ${DANGER_PATH}
     brew install npm
     npm install
@@ -24,6 +25,7 @@ danger_install() {
 }
 
 danger_run() {
+    cd ${PROJECT_PATH} ## test
     pushd ${DANGER_PATH}
     swift run danger-swift ci --danger-js-path node_modules/.bin/danger --cwd ${PROJECT_PATH}
 }
