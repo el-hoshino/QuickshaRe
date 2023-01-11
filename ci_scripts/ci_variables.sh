@@ -22,6 +22,7 @@ danger_install() {
     brew install npm
     npm install
     swift build
+    popd
 }
 
 danger_run() {
