@@ -25,7 +25,7 @@ danger_install() {
 }
 
 danger_run() {
-    ls -al "${CI_PROJECT_FILE_PATH}/../" ## test
-    pushd ${DANGER_PATH}
+    ls -al Danger ## test
+    pushd Danger
     swift run danger-swift ci --danger-js-path node_modules/.bin/danger --cwd ${PROJECT_PATH}
 }
