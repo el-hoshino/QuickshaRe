@@ -69,9 +69,6 @@ class QuickshaReUITests: XCTestCase {
             urlBar.tap()
             let urlField = urlBar.textFields["URL"]
             let continueButton = app.buttons["Continue"]
-            if continueButton.exists {
-                continueButton.tap()
-            }
             urlField.typeText("about:blank")
             app.buttons["Go"].tap()
         }
