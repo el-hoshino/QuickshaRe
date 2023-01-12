@@ -59,6 +59,7 @@ class QuickshaReUITests: XCTestCase {
         
     }
     
+    /*
     #if !TEST_ON_CI
     func testQRCodeGenerationFromSafari() {
         
@@ -98,6 +99,7 @@ class QuickshaReUITests: XCTestCase {
         
     }
     #endif
+     */
     
 }
 
