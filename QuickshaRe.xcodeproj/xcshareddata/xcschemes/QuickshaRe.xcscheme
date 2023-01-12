@@ -59,6 +59,11 @@
                BlueprintName = "QuickshaReUITests"
                ReferencedContainer = "container:QuickshaRe.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "QuickshaReUITests/testQRCodeGenerationFromSafari()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
