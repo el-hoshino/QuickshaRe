@@ -4,7 +4,6 @@ source ci_variables.sh
 
 set -ex
 
-if [ $CI_XCODEBUILD_ACTION = "test-without-building" ]; then
-    danger_install
+if [ $CI_XCODEBUILD_ACTION = "build-for-testing" ]; then
     danger_run
 fi
