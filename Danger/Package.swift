@@ -18,8 +18,8 @@ let package = Package(
         .package(url: "https://github.com/danger/swift.git", from: "3.0.0"),
         // Danger Plugins
         .package(url: "https://github.com/yumemi-inc/danger-swift-kantoku.git", from: "0.1.0"),
+        .package(url: "https://github.com/yumemi-inc/danger-swift-eda.git", from: "0.2.0"),
         .package(url: "https://github.com/f-meloni/danger-swift-coverage.git", from: "1.2.0"),
-        .package(url: "https://github.com/el-hoshino/DangerSwiftHammer.git", from: "0.1.0"),
     ],
     targets: [
         .target(
@@ -27,8 +27,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Danger", package: "swift"),
                 .product(name: "DangerSwiftKantoku", package: "danger-swift-kantoku"),
+                .product(name: "DangerSwiftEda", package: "danger-swift-eda"),
                 .product(name: "DangerSwiftCoverage", package: "danger-swift-coverage"),
-                .product(name: "DangerSwiftHammer", package: "DangerSwiftHammer"),
             ]
         ),
     ]

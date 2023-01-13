@@ -10,12 +10,30 @@
       }
     },
     {
+      "identity" : "danger-swift-eda",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yumemi-inc/danger-swift-eda.git",
+      "state" : {
+        "revision" : "5f056baf421b61b0231ecbb805d64575d17c310e",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "danger-swift-kantoku",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yumemi-inc/danger-swift-kantoku.git",
       "state" : {
         "revision" : "8d3283ec9a00f524135e6ccc80762457c1891389",
         "version" : "0.1.1"
+      }
+    },
+    {
+      "identity" : "danger-swift-shoki",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yumemi-inc/danger-swift-shoki/",
+      "state" : {
+        "revision" : "e0941e5a76003f8616689c127717c49de3210780",
+        "version" : "0.2.0"
       }
     },
     {
