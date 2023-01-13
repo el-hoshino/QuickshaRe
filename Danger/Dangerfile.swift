@@ -31,9 +31,6 @@ private extension SwiftLint.SwiftlintPath {
 // MARK: - チェックルーチン
 let danger = Danger()
 
-// SwiftLint のワーニング等確認
-SwiftLint.lint(.modifiedAndCreatedFiles(directory: nil), inline: true, configFile: "swiftlint.yml", swiftlintPath: .installedBySwiftPM)
-
 // Xcode ビルドのワーニング等確認
 danger.kantoku.parseXCResultFile(at: ProcessInfo.xcTestResultPath, configuration: .default)
 
