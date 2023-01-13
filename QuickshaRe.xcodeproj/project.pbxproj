@@ -93,6 +93,7 @@
 		BF349F8E250C16810083B498 /* TextInputViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewTests.swift; sourceTree = "<group>"; };
 		BF7AB87825AC6588006DEE77 /* QuickshaReApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickshaReApp.swift; sourceTree = "<group>"; };
 		BF96013B23C6FC040034CE20 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		BFEB49DB29719CCC00B6EC94 /* AppPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +160,7 @@
 		797AF63823A7E0C800E41949 = {
 			isa = PBXGroup;
 			children = (
+				BFEB49DB29719CCC00B6EC94 /* AppPackage */,
 				797AF64323A7E0C800E41949 /* QuickshaRe */,
 				797AF65A23A7E0CB00E41949 /* QuickshaReTests */,
 				797AF66523A7E0CB00E41949 /* QuickshaReUITests */,
