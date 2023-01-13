@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced
 
 - Using Danger-Swift instead of ruby Danger.
-- Xcode 12 Support
-- iOS 14 Support
+- Xcode 14 Support
+- iOS 16 Support
+- Xcode Cloud migration
 
 ### Removed
 
