@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreImage
-@testable import QuickshaRe
+@testable import AppPackage
 
 class QRPictoreGeneratorTests: XCTestCase {
     
