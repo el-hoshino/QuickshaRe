@@ -11,7 +11,7 @@ import Combine
 
 struct TextInputView: View {
     
-    @State var inputText: String = ""
+    @State private var inputText: String = ""
     
     var body: some View {
         HStack {
