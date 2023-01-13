@@ -1,11 +1,16 @@
 # Overall Rules:
 
 included: # paths to include during linting. `--path` is ignored if present.
+  - AppPackage
+  - Danger
   - QuickshaRe
-  - QuickshaReTests
   - QuickshaReUITests
   - ShareMenu
 
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - ./**/DerivedData
+  - ./**/.build
+  
 opt_in_rules:
   - anyobject_protocol
   - closure_body_length
