@@ -14,19 +14,13 @@
 		797AF66723A7E0CB00E41949 /* QuickshaReUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */; };
 		79DB0FB923CA06430040E275 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB0FB823CA06430040E275 /* ShareViewController.swift */; };
 		79DB0FBC23CA06430040E275 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DB0FBA23CA06430040E275 /* MainInterface.storyboard */; };
-		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BF349F8D250C16360083B498 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = BF349F8C250C16360083B498 /* ViewInspector */; };
+		79DB0FC023CA06430040E275 /* ShareMenu.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 79DB0FB623CA06430040E275 /* ShareMenu.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF07581D2971A25B00FA06BB /* AppPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BF07581C2971A25B00FA06BB /* AppPackage */; };
+		BF07581F2971A26300FA06BB /* AppPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BF07581E2971A26300FA06BB /* AppPackage */; };
 		BF7AB87925AC6588006DEE77 /* QuickshaReApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AB87825AC6588006DEE77 /* QuickshaReApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		797AF65823A7E0CB00E41949 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 797AF63923A7E0C800E41949 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 797AF64023A7E0C800E41949;
-			remoteInfo = QuickshaRe;
-		};
 		797AF66323A7E0CB00E41949 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 797AF63923A7E0C800E41949 /* Project object */;
@@ -64,8 +58,6 @@
 		797AF64A23A7E0CB00E41949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		797AF64D23A7E0CB00E41949 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		797AF65223A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		797AF65D23A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickshaReUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		797AF66623A7E0CB00E41949 /* QuickshaReUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickshaReUITests.swift; sourceTree = "<group>"; };
 		797AF66823A7E0CB00E41949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,15 +77,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				794B927723C62B5C00C6BC4D /* CoreGraphics.framework in Frameworks */,
+				BF07581F2971A26300FA06BB /* AppPackage in Frameworks */,
 				794B927523C62B5100C6BC4D /* CoreImage.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		797AF65423A7E0CB00E41949 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF349F8D250C16360083B498 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF07581D2971A25B00FA06BB /* AppPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +114,6 @@
 			children = (
 				BFEB49DB29719CCC00B6EC94 /* AppPackage */,
 				797AF64323A7E0C800E41949 /* QuickshaRe */,
-				797AF65A23A7E0CB00E41949 /* QuickshaReTests */,
 				797AF66523A7E0CB00E41949 /* QuickshaReUITests */,
 				79DB0FB723CA06430040E275 /* ShareMenu */,
 				797AF64223A7E0C800E41949 /* Products */,
@@ -140,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				797AF64123A7E0C800E41949 /* QuickshaRe.app */,
-				797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */,
 				797AF66223A7E0CB00E41949 /* QuickshaReUITests.xctest */,
 				79DB0FB623CA06430040E275 /* ShareMenu.appex */,
 			);
@@ -165,14 +149,6 @@
 				797AF64D23A7E0CB00E41949 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		797AF65A23A7E0CB00E41949 /* QuickshaReTests */ = {
-			isa = PBXGroup;
-			children = (
-				797AF65D23A7E0CB00E41949 /* Info.plist */,
-			);
-			path = QuickshaReTests;
 			sourceTree = "<group>";
 		};
 		797AF66523A7E0CB00E41949 /* QuickshaReUITests */ = {
@@ -215,31 +191,11 @@
 			);
 			name = QuickshaRe;
 			packageProductDependencies = (
+				BF07581E2971A26300FA06BB /* AppPackage */,
 			);
 			productName = QuickshaRe;
 			productReference = 797AF64123A7E0C800E41949 /* QuickshaRe.app */;
 			productType = "com.apple.product-type.application";
-		};
-		797AF65623A7E0CB00E41949 /* QuickshaReTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 797AF66E23A7E0CB00E41949 /* Build configuration list for PBXNativeTarget "QuickshaReTests" */;
-			buildPhases = (
-				797AF65323A7E0CB00E41949 /* Sources */,
-				797AF65423A7E0CB00E41949 /* Frameworks */,
-				797AF65523A7E0CB00E41949 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				797AF65923A7E0CB00E41949 /* PBXTargetDependency */,
-			);
-			name = QuickshaReTests;
-			packageProductDependencies = (
-				BF349F8C250C16360083B498 /* ViewInspector */,
-			);
-			productName = QuickshaReTests;
-			productReference = 797AF65723A7E0CB00E41949 /* QuickshaReTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		797AF66123A7E0CB00E41949 /* QuickshaReUITests */ = {
 			isa = PBXNativeTarget;
@@ -272,6 +228,9 @@
 			dependencies = (
 			);
 			name = ShareMenu;
+			packageProductDependencies = (
+				BF07581C2971A25B00FA06BB /* AppPackage */,
+			);
 			productName = ShareMenu;
 			productReference = 79DB0FB623CA06430040E275 /* ShareMenu.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -288,10 +247,6 @@
 				TargetAttributes = {
 					797AF64023A7E0C800E41949 = {
 						CreatedOnToolsVersion = 11.2;
-					};
-					797AF65623A7E0CB00E41949 = {
-						CreatedOnToolsVersion = 11.2;
-						TestTargetID = 797AF64023A7E0C800E41949;
 					};
 					797AF66123A7E0CB00E41949 = {
 						CreatedOnToolsVersion = 11.2;
@@ -320,7 +275,6 @@
 			targets = (
 				797AF64023A7E0C800E41949 /* QuickshaRe */,
 				79DB0FB523CA06430040E275 /* ShareMenu */,
-				797AF65623A7E0CB00E41949 /* QuickshaReTests */,
 				797AF66123A7E0CB00E41949 /* QuickshaReUITests */,
 			);
 		};
@@ -333,13 +287,6 @@
 			files = (
 				797AF64E23A7E0CB00E41949 /* Preview Assets.xcassets in Resources */,
 				797AF64B23A7E0CB00E41949 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		797AF65523A7E0CB00E41949 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,13 +338,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		797AF65323A7E0CB00E41949 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		797AF65E23A7E0CB00E41949 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,11 +357,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		797AF65923A7E0CB00E41949 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 797AF64023A7E0C800E41949 /* QuickshaRe */;
-			targetProxy = 797AF65823A7E0CB00E41949 /* PBXContainerItemProxy */;
-		};
 		797AF66423A7E0CB00E41949 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 797AF64023A7E0C800E41949 /* QuickshaRe */;
@@ -429,6 +364,7 @@
 		};
 		79DB0FBF23CA06430040E275 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 79DB0FB523CA06430040E275 /* ShareMenu */;
 			targetProxy = 79DB0FBE23CA06430040E275 /* PBXContainerItemProxy */;
 		};
@@ -571,11 +507,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = QuickshaRe/QuickshaRe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickshaRe/Preview Content\"";
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickshaRe/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,8 +520,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_PACKAGES_RUN = "xcrun -sdk macosx swift run --package-path SwiftPackages";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -599,11 +535,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = QuickshaRe/QuickshaRe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickshaRe/Preview Content\"";
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickshaRe/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,51 +548,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_PACKAGES_RUN = "xcrun -sdk macosx swift run --package-path SwiftPackages";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
-			};
-			name = Release;
-		};
-		797AF66F23A7E0CB00E41949 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KC8N9BMQJY;
-				INFOPLIST_FILE = QuickshaReTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaReTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickshaRe.app/QuickshaRe";
-			};
-			name = Debug;
-		};
-		797AF67023A7E0CB00E41949 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KC8N9BMQJY;
-				INFOPLIST_FILE = QuickshaReTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaReTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickshaRe.app/QuickshaRe";
 			};
 			name = Release;
 		};
@@ -675,7 +571,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaReUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				TEST_TARGET_NAME = QuickshaRe;
 			};
 			name = Debug;
@@ -695,7 +595,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaReUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				TEST_TARGET_NAME = QuickshaRe;
 			};
 			name = Release;
@@ -705,7 +609,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareMenu/ShareMenu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = ShareMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,12 +616,13 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe.ShareMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -727,7 +631,6 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareMenu/ShareMenu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = ShareMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -735,12 +638,13 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.QuickshaRe.ShareMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -761,15 +665,6 @@
 			buildConfigurations = (
 				797AF66C23A7E0CB00E41949 /* Debug */,
 				797AF66D23A7E0CB00E41949 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		797AF66E23A7E0CB00E41949 /* Build configuration list for PBXNativeTarget "QuickshaReTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				797AF66F23A7E0CB00E41949 /* Debug */,
-				797AF67023A7E0CB00E41949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -806,10 +701,13 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF349F8C250C16360083B498 /* ViewInspector */ = {
+		BF07581C2971A25B00FA06BB /* AppPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
+			productName = AppPackage;
+		};
+		BF07581E2971A26300FA06BB /* AppPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

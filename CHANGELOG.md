@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Xcode 14 Support
 - iOS 16 Support
 - Xcode Cloud migration
+- Using Swift Package for developing
 
 ### Removed
 

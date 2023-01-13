@@ -12,6 +12,8 @@ public final class QRPictureGenerator {
     
     let context = CIContext()
     
+    public init() {}
+    
 }
 
 extension QRPictureGenerator: QRCodeGeneratorObject {

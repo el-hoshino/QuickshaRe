@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppPackage
 
 @main
 struct QuickshaReApp: App {

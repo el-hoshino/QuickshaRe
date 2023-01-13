@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-RN-oga">
-                                <rect key="frame" x="0.0" y="104" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="414"/>
                                 <accessibility key="accessibilityConfiguration" identifier="QR Image"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fAS-RN-oga" secondAttribute="height" multiplier="1:1" id="WHt-py-gjQ"/>
@@ -26,7 +28,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eab-F5-zBI">
-                                <rect key="frame" x="157.5" y="538" width="99" height="24"/>
+                                <rect key="frame" x="158" y="542" width="98.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="lON-K6-T9O"/>
                                 </constraints>
@@ -48,14 +50,14 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5H-m0-X8Y" userLabel="Close Button">
-                                <rect key="frame" x="374" y="50" width="34" height="34"/>
+                                <rect key="frame" x="374" y="54" width="34" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="RTR-a2-cgt"/>
                                     <constraint firstAttribute="height" constant="34" id="eIG-bS-FXP"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemFillColor"/>
                                 <state key="normal" image="xmark.circle.fill" catalog="system">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                     </preferredSymbolConfiguration>
@@ -65,7 +67,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="Share View"/>
                         <constraints>
                             <constraint firstItem="fAS-RN-oga" firstAttribute="top" secondItem="e5H-m0-X8Y" secondAttribute="bottom" constant="20" id="5gG-hH-bFh"/>
@@ -83,7 +86,6 @@
                             <constraint firstItem="fAS-RN-oga" firstAttribute="height" secondItem="1Xd-am-t49" secondAttribute="height" priority="999" id="kf3-kN-gV2"/>
                             <constraint firstItem="eab-F5-zBI" firstAttribute="width" relation="lessThanOrEqual" secondItem="1Xd-am-t49" secondAttribute="width" id="xbi-wE-xqx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                     </view>
                     <connections>
                         <outlet property="qrImageView" destination="fAS-RN-oga" id="IfC-VR-bu6"/>
@@ -97,6 +99,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="xmark.circle.fill" catalog="system" width="32" height="32"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
