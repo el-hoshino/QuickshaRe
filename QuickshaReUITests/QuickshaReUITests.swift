@@ -68,7 +68,6 @@ class QuickshaReUITests: XCTestCase {
             let urlBar = app.otherElements["CapsuleNavigationBar?isSelected=true"]
             urlBar.tap()
             let urlField = urlBar.textFields["URL"]
-            let continueButton = app.buttons["Continue"]
             urlField.typeText("about:blank")
             app.buttons["Go"].tap()
         }
