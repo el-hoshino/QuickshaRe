@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -248,8 +248,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 797AF66B23A7E0CB00E41949 /* Build configuration list for PBXNativeTarget "QuickshaRe" */;
 			buildPhases = (
-				79FB0FEB23D382950078DFD8 /* Run SwiftLint */,
 				797AF63D23A7E0C800E41949 /* Sources */,
+				79FB0FEB23D382950078DFD8 /* Run SwiftLint */,
 				797AF63E23A7E0C800E41949 /* Frameworks */,
 				797AF63F23A7E0C800E41949 /* Resources */,
 				79DB0FC123CA06430040E275 /* Embed App Extensions */,
@@ -409,6 +409,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		79FB0FEB23D382950078DFD8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
