@@ -107,3 +107,13 @@ private extension XCUIElement {
     }
     
 }
+
+private extension QuickshaReUITests {
+    
+    // swiftlint result reporting check
+    func dummy(
+        aaa: Int,
+        bbb: Int) {
+    }
+    
+}

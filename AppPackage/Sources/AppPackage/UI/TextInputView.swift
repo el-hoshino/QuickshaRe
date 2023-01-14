@@ -67,6 +67,16 @@ extension View {
     
 }
 
+private extension TextInputView {
+    
+    // swiftlint result reporting check
+    func dummy(
+        aaa: Int,
+        bbb: Int) {
+    }
+    
+}
+
 struct TextInputView_Previews: PreviewProvider {
     static var previews: some View {
         
