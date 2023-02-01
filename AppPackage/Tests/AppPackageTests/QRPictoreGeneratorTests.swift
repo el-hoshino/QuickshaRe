@@ -28,13 +28,3 @@ class QRPictoreGeneratorTests: XCTestCase {
     }
     
 }
-
-private extension QRPictoreGeneratorTests {
-    
-    // swiftlint result reporting check
-    func dummy(
-        aaa: Int,
-        bbb: Int) {
-    }
-    
-}

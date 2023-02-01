@@ -19,13 +19,3 @@ struct QuickshaReApp: App {
         }
     }
 }
-
-private extension QuickshaReApp {
-    
-    // swiftlint result reporting check
-    func dummy(
-        aaa: Int,
-        bbb: Int) {
-    }
-    
-}

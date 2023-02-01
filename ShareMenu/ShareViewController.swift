@@ -196,13 +196,3 @@ private extension UISegmentedControl {
     }
     
 }
-
-private extension ShareViewController {
-    
-    // swiftlint result reporting check
-    func dummy(
-        aaa: Int,
-        bbb: Int) {
-    }
-    
-}
