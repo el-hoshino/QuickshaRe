@@ -1,0 +1,6 @@
+{
+  "license": "UNLICENSED",
+  "dependencies": {
+    "danger": ">=11.0.7"
+  }
+}

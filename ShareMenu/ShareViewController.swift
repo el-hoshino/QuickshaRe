@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import MobileCoreServices
+import AppPackage
 
 class ShareViewController: UIViewController {
     
@@ -17,9 +18,9 @@ class ShareViewController: UIViewController {
         static let dummyError: Dismiss = .init()
     }
     
-    @IBOutlet weak var qrImageView: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var sharingItemSwitch: UISegmentedControl!
+    @IBOutlet private weak var qrImageView: UIImageView!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var sharingItemSwitch: UISegmentedControl!
     
     private lazy var generator = QRPictureGenerator()
     
@@ -117,7 +118,7 @@ extension ShareViewController {
         
         let dispatchGroup = DispatchGroup()
         
-        for attatchment in inputItem.attachments ?? [] {
+        for attatchment in inputItem.attachments ?? [] { // swiftlint:disable:this optional_default_value
             for identifier in attatchment.registeredTypeIdentifiers {
                 
                 dispatchGroup.enter()

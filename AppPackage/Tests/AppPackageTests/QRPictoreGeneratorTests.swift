@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreImage
-@testable import QuickshaRe
+@testable import AppPackage
 
 class QRPictoreGeneratorTests: XCTestCase {
     
@@ -17,9 +17,13 @@ class QRPictoreGeneratorTests: XCTestCase {
         let message = "abc"
         let generator = QRPictureGenerator()
         let picture = generator.qrPicture(for: message)
+        let generatedImageData = picture.uiImage.pngData()!
+        
+        let attachment = XCTAttachment(data: generatedImageData)
+        add(attachment)
         
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil)!
-        let features = detector.features(in: CIImage(image: picture.uiImage)!) as! [CIQRCodeFeature] //swiftlint:disable:this force_cast
+        let features = detector.features(in: CIImage(image: picture.uiImage)!) as! [CIQRCodeFeature] // swiftlint:disable:this force_cast
         XCTAssertEqual(features[0].messageString, message)
     }
     

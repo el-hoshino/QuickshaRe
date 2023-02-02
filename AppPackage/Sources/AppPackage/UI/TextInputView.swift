@@ -9,18 +9,25 @@
 import SwiftUI
 import Combine
 
-struct TextInputView: View {
+public struct TextInputView: View {
     
-    @State var inputText: String = ""
+    @State private var inputText: String = ""
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         HStack {
-            TextField("Type here to input text",
-                      text: $inputText,
-                      onCommit: { [self] in self.endEditing(from: self) })
+            TextField(
+                "Type here to input text",
+                text: $inputText,
+                onCommit: { [self] in self.endEditing(from: self) }
+            )
                 .underline()
-            NavigationLink(destination: QRCodeImageView(content: inputText),
-                           label: { Text("Generate") })
+            
+            NavigationLink(
+                "Generate",
+                destination: makeQRCodeImageView()
+            )
                 .padding(5)
                 .border(color: .secondary, cornerRadius: 10, lineWidth: 1)
                 .disabled(inputText.isEmpty)
@@ -32,6 +39,10 @@ struct TextInputView: View {
     
     private func endEditing(from source: Any?) {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: source, for: nil)
+    }
+    
+    private func makeQRCodeImageView() -> some View {
+        return QRCodeImageView(generator: QRPictureGenerator(), content: inputText)
     }
     
 }

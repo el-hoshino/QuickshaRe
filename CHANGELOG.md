@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2023-02-02
+
+### Enhanced
+
+- Using Danger-Swift instead of ruby Danger.
+- Xcode 14 Support
+- iOS 16 Support
+- Xcode Cloud migration
+- Using Swift Package for developing
+
+### Removed
+
+- iOS 13 Support
+
 ## [1.0.2] - 2020-06-26
 
 ### Added

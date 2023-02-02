@@ -6,12 +6,17 @@
 //  Copyright © 2020 Crazism. All rights reserved.
 //
 
-import CoreImage
 import CoreImage.CIFilterBuiltins
 
-final public class QRPictureGenerator {
+public final class QRPictureGenerator {
     
     let context = CIContext()
+    
+    public init() {}
+    
+}
+
+extension QRPictureGenerator: QRCodeGeneratorObject {
     
     public func qrPicture(for text: String) -> Picture {
         
