@@ -8,7 +8,7 @@
 
 import XCTest
 import ViewInspector
-@testable import QuickshaRe
+@testable import AppPackage
 
 class TextInputViewTests: XCTestCase {
     
@@ -18,13 +18,14 @@ class TextInputViewTests: XCTestCase {
         
         let inputTextFieldText = try view
             .inputTextField()
+            .labelView()
             .text()
             .string()
         XCTAssertEqual(inputTextFieldText, "Type here to input text")
         
         let generateButtonText = try view
             .generateButton()
-            .label()
+            .labelView()
             .text()
             .string()
         XCTAssertEqual(generateButtonText, "Generate")
@@ -33,7 +34,7 @@ class TextInputViewTests: XCTestCase {
     
 }
 
-extension TextInputView: Inspectable {
+extension TextInputView {
     
     func inputTextField() throws -> InspectableView<ViewType.TextField> {
         

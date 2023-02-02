@@ -4,6 +4,6 @@ source ci_variables.sh
 
 set -ex
 
-if [ $CI_XCODEBUILD_ACTION = "build-for-testing" ]; then
+if [ $CI_XCODEBUILD_ACTION = "archive" ]; then
     danger_run
 fi

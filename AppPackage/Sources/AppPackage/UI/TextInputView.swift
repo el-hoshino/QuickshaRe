@@ -9,11 +9,13 @@
 import SwiftUI
 import Combine
 
-struct TextInputView: View {
+public struct TextInputView: View {
     
     @State private var inputText: String = ""
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         HStack {
             TextField(
                 "Type here to input text",
