@@ -11,6 +11,7 @@ import Social
 import MobileCoreServices
 import AppPackage
 
+@objc(ShareExtensionViewController)
 class ShareViewController: UIViewController {
     
     /// On dismiss, cancelRequest requires an error but in practice it is NOT. So just give it a dummy error
