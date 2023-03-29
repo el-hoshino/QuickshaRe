@@ -1,9 +1,5 @@
 #!/bin/zsh
 
-danger_run() {
-    pushd Danger
-    brew install npm
-    npm install
-    swift build
-    swift run danger-swift ci --danger-js-path node_modules/.bin/danger --cwd ${CI_WORKSPACE}
+set_skip_swift_package_plugin_validation() {
+    defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
 }

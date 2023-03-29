@@ -14,7 +14,7 @@
             location = "group:ci_variables.sh">
          </FileRef>
          <FileRef
-            location = "group:ci_post_xcodebuild.sh">
+            location = "group:ci_post_clone.sh">
          </FileRef>
       </Group>
       <Group
