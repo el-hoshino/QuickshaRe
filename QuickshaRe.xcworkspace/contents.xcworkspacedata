@@ -17,19 +17,6 @@
             location = "group:ci_post_clone.sh">
          </FileRef>
       </Group>
-      <Group
-         location = "container:Danger"
-         name = "Danger">
-         <FileRef
-            location = "group:Dangerfile.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Package.swift">
-         </FileRef>
-         <FileRef
-            location = "group:package.json">
-         </FileRef>
-      </Group>
       <FileRef
          location = "group:swiftlint.yml">
       </FileRef>
