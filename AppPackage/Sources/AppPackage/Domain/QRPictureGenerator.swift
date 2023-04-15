@@ -14,6 +14,8 @@ public final class QRPictureGenerator {
     
     public init() {}
     
+    public static let shared = QRPictureGenerator()
+    
 }
 
 extension QRPictureGenerator: QRCodeGeneratorObject {
