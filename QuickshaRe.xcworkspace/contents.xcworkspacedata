@@ -11,6 +11,9 @@
          location = "group:ci_scripts">
       </FileRef>
       <FileRef
+         location = "group:.github">
+      </FileRef>
+      <FileRef
          location = "group:swiftlint.yml">
       </FileRef>
       <FileRef
