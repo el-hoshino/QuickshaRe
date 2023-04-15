@@ -7,29 +7,12 @@
       <FileRef
          location = "group:SwiftPackages">
       </FileRef>
-      <Group
-         location = "group:ci_scripts"
-         name = "ci_scripts">
-         <FileRef
-            location = "group:ci_variables.sh">
-         </FileRef>
-         <FileRef
-            location = "group:ci_post_xcodebuild.sh">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:Danger"
-         name = "Danger">
-         <FileRef
-            location = "group:Dangerfile.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Package.swift">
-         </FileRef>
-         <FileRef
-            location = "group:package.json">
-         </FileRef>
-      </Group>
+      <FileRef
+         location = "group:ci_scripts">
+      </FileRef>
+      <FileRef
+         location = "group:.github">
+      </FileRef>
       <FileRef
          location = "group:swiftlint.yml">
       </FileRef>

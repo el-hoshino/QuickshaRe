@@ -7,7 +7,7 @@ let package = Package(
     name: "Dependencies",
     products: [],
     dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.47.1"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0"),
     ],
     targets: []
 )
