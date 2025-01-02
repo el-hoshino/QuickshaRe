@@ -10,7 +10,6 @@ import XCTest
 import ViewInspector
 @testable import AppPackage
 
-/*
 @MainActor
 class TextInputViewTests: XCTestCase {
     
@@ -56,4 +55,3 @@ extension TextInputView {
     }
     
 }
-*/
