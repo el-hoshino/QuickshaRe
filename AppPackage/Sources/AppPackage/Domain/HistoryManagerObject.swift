@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Observation
 
 // A history manager protocol
-protocol HistoryManagerProtocol {
-    func addHistory(_ history: History)
-    func deleteHistory(_ history: History)
-    func deleteAllHistories()
-    func getHistories() -> [History]
+protocol HistoryManagerProtocol: Sendable, Observable {
+    func addHistory(_ history: History) async
+    func deleteHistory(_ history: History) async
+    func deleteAllHistories() async
+    func getHistories() async -> [History]
 }
