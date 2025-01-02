@@ -13,9 +13,7 @@ public final class QRPictureGenerator {
     let context = CIContext()
     
     public init() {}
-    
-    public static let shared = QRPictureGenerator()
-    
+        
 }
 
 extension QRPictureGenerator: QRCodeGeneratorObject {
