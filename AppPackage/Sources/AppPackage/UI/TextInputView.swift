@@ -42,7 +42,7 @@ public struct TextInputView: View {
     }
     
     private func makeQRCodeImageView() -> some View {
-        return QRCodeImageView(generator: QRPictureGenerator(), content: inputText)
+        return QRCodeImageView(content: inputText)
     }
     
 }

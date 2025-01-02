@@ -10,6 +10,7 @@ import AppPackage
 
 @main
 struct QuickshaReApp: App {
+    @State private var qrCodeGenerator: QRCodeGeneratorObject = QRPictureGenerator()
     var body: some Scene {
         WindowGroup {
             NavigationView(content: {
@@ -17,5 +18,6 @@ struct QuickshaReApp: App {
                 Text("Input text from navigation bar to generate QR code image 😘")
             })
         }
+        .environment(\.qrCodeGenerator, qrCodeGenerator)
     }
 }

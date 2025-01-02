@@ -35,7 +35,6 @@ struct TextListView<ListObject: ObservableTextListObject>: View {
             ForEach(listObject.textList, id: \.self) { text in
                 NavigationLink(text) {
                     QRCodeImageView(
-                        generator: QRPictureGenerator.shared,
                         content: text
                     )
                 }
