@@ -10,6 +10,7 @@ import XCTest
 import ViewInspector
 @testable import AppPackage
 
+@MainActor
 class TextInputViewTests: XCTestCase {
     
     func testTextInputView() throws {
