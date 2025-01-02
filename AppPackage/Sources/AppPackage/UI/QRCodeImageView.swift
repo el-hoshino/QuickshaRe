@@ -41,26 +41,15 @@ struct QRCodeImageView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        Group {
-            
-            NavigationView {
-                QRCodeImageView(
-                    content: "https://github.com/el-hoshino/QuickshaRe"
-                )
-            }.environment(\.colorScheme, .light)
-            
-            NavigationView {
-                QRCodeImageView(
-                    content: "https://github.com/el-hoshino/QuickshaRe"
-                )
-            }.environment(\.colorScheme, .dark)
-            
-        }
-        
+#if DEBUG
+@MainActor
+private let qrCodeGenerator = QRPictureGenerator()
+#Preview {
+    NavigationStack {
+        QRCodeImageView(
+            content: "https://github.com/el-hoshino/QuickshaRe"
+        )
     }
-    
+    .environment(\.qrCodeGenerator, qrCodeGenerator)
 }
+#endif
