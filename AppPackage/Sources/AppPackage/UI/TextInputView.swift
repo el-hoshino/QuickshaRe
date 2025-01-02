@@ -67,21 +67,13 @@ extension View {
     
 }
 
-struct TextInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        Group {
-            
-            NavigationView {
-                TextInputView()
-            }.environment(\.colorScheme, .light)
-            
-            NavigationView {
-                TextInputView()
-            }.environment(\.colorScheme, .dark)
-            
-        }
-        
+#if DEBUG
+@MainActor
+private let qrCodeGenerator = QRPictureGenerator()
+#Preview {
+    NavigationView {
+        TextInputView()
     }
-    
+    .environment(\.qrCodeGenerator, qrCodeGenerator)
 }
+#endif
