@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable
-final class HistoryManager: Sendable {
+public final class HistoryManager: Sendable {
     
     private enum SaveDataVersion: Codable {
         case v1
@@ -75,7 +75,7 @@ final class HistoryManager: Sendable {
 
 extension HistoryManager: HistoryManagerProtocol {
     
-    func addHistory(_ history: History) async {
+    public func addHistory(_ history: History) async {
         
         await histories.waitForValue()
         
@@ -94,7 +94,7 @@ extension HistoryManager: HistoryManagerProtocol {
         }
     }
     
-    func deleteHistory(_ history: History) async {
+    public func deleteHistory(_ history: History) async {
         
         await histories.waitForValue()
         
@@ -107,7 +107,7 @@ extension HistoryManager: HistoryManagerProtocol {
         
     }
     
-    func deleteAllHistories() async {
+    public func deleteAllHistories() async {
         
         await histories.waitForValue()
         
@@ -117,10 +117,14 @@ extension HistoryManager: HistoryManagerProtocol {
         
     }
     
-    func getHistories() async -> [History] {
+    @MainActor
+    public func getHistories() -> [History] {
         
         // Return the list in the order of the most recent history.
-        return await histories.waitForValue().reversed()
+        guard let histories else {
+            return []
+        }
+        return histories.reversed()
         
     }
     

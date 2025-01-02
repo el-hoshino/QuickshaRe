@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias History = String
+public typealias History = String
