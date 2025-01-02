@@ -62,12 +62,14 @@ opt_in_rules:
   - switch_case_on_newline
   - test_case_accessibility
   - toggle_bool
-  - unused_declaration
-  - unused_import
   - vertical_parameter_alignment_on_call
   - vertical_whitespace_between_cases
   - xct_specific_matcher
   - yoda_condition
+
+analyzer_rules:
+  - unused_declaration
+  - unused_import
   
 # Single-Rule Configurations:
 

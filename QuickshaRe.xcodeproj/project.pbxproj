@@ -267,7 +267,6 @@
 			);
 			mainGroup = 797AF63823A7E0C800E41949;
 			packageReferences = (
-				BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 797AF64223A7E0C800E41949 /* Products */;
 			projectDirPath = "";
@@ -688,17 +687,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BF349F89250C15FF0083B498 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nalexn/ViewInspector";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.7;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		BF07581C2971A25B00FA06BB /* AppPackage */ = {

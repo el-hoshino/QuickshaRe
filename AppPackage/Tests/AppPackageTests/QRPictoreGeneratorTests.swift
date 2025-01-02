@@ -10,6 +10,7 @@ import XCTest
 import CoreImage
 @testable import AppPackage
 
+@MainActor
 class QRPictoreGeneratorTests: XCTestCase {
     
     func testPictureGeneration() {
