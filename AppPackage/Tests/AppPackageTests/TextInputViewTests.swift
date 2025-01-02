@@ -40,17 +40,21 @@ extension TextInputView {
     func inputTextField() throws -> InspectableView<ViewType.TextField> {
         
         try inspect()
-        .hStack()
-        .vStack(0)
-        .textField(0)
+            .implicitAnyView()
+            .hStack()[0]
+            .anyView()[0]
+            .vStack()[0]
+            .textField()
         
     }
     
     func generateButton() throws -> InspectableView<ViewType.NavigationLink> {
         
         try inspect()
-        .hStack()
-        .navigationLink(1)
+            .implicitAnyView()
+            .hStack()[1]
+            .anyView()[0]
+            .navigationLink()
         
     }
     
