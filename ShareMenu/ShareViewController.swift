@@ -10,6 +10,7 @@ import UIKit
 import Social
 import MobileCoreServices
 import AppPackage
+import UniformTypeIdentifiers
 
 @objc(ShareExtensionViewController)
 class ShareViewController: UIViewController {
@@ -87,6 +88,7 @@ class ShareViewController: UIViewController {
 
 extension ShareViewController {
     
+    // TODO: Migrate to Swift Concurrency
     private func loadItem(from attachment: NSItemProvider, as typeIdentifier: String, completion: @escaping (SharingItem?) -> Void) {
         
         attachment.loadItem(forTypeIdentifier: typeIdentifier) { (coding, error) in
@@ -96,12 +98,17 @@ extension ShareViewController {
                 return completion(nil)
             }
             
-            switch typeIdentifier as CFString {
-            case kUTTypeURL:
+            guard let type = UTType(typeIdentifier) else {
+                defer { completion(nil) }
+                return
+            }
+
+            switch type {
+            case .url:
                 guard let url = item as? URL else { assertionFailure("Failed to load item as URL."); break }
                 return completion(("URL", url.absoluteString))
                 
-            case kUTTypeText, kUTTypePlainText:
+            case .text, .plainText:
                 guard let text = item as? String else { assertionFailure("Failed to load item as Text."); break }
                 return completion(("Text", text))
                 
