@@ -7,43 +7,37 @@
 
 import SwiftUI
 
-protocol ObservableTextListObject: ObservableObject {
-    var textList: [String] { get }
-    func remove(_ text: String)
-}
-
-private struct NavigationList<Content: View>: View {
-    private var content: () -> Content
-    init(content: @escaping () -> Content) {
-        self.content = content
-    }
+struct TextListView: View {
+    
+    @Environment(\.histories) var histories: [History]?
+    @Environment(\.deleteHistory) var deleteHistory: DeleteHistoryAction?
+    
     var body: some View {
         NavigationStack {
-            List {
-                content()
+            if let histories {
+                List {
+                    historyList(of: histories)
+                }
+            } else {
+                Text("Loading...")
             }
         }
     }
-}
-
-struct TextListView<ListObject: ObservableTextListObject>: View {
     
-    @ObservedObject var listObject: ListObject
-    
-    var body: some View {
-        NavigationList {
-            ForEach(listObject.textList, id: \.self) { text in
-                NavigationLink(text) {
-                    QRCodeImageView(
-                        content: text
-                    )
-                }
-                .swipeActions(edge: .trailing) {
-                    Button(role: .destructive) {
-                        listObject.remove(text)
-                    } label: {
-                        Label("Delete", systemImage: "trash")
+    private func historyList(of histories: [History]) -> some View {
+        ForEach(histories, id: \.self) { text in
+            NavigationLink(text) {
+                QRCodeImageView(
+                    content: text
+                )
+            }
+            .swipeActions(edge: .trailing) {
+                Button(role: .destructive) {
+                    Task {
+                        await deleteHistory?(of: text)
                     }
+                } label: {
+                    Label("Delete", systemImage: "trash")
                 }
             }
         }
@@ -51,23 +45,41 @@ struct TextListView<ListObject: ObservableTextListObject>: View {
     
 }
 
-struct TextListView_Previews: PreviewProvider {
-    private final class PreviewListObject: ObservableTextListObject {
-        @Published private(set) var textList: [String] = [
-            "Hello",
-            "World",
-            "This",
-            "Is",
-            "A",
-            "Preview",
-            "Of",
-            "TextListView",
-        ]
-        func remove(_ text: String) {
-            textList.removeAll { $0 == text }
-        }
-    }
-    static var previews: some View {
-        TextListView(listObject: PreviewListObject())
-    }
+#if DEBUG
+@Observable
+private final class PreviewManager: Sendable {
+    @MainActor
+    var histories: [History] = [
+        "Hello",
+        "World",
+        "This",
+        "Is",
+        "A",
+        "Preview",
+        "Of",
+        "TextListView",
+    ]
+    
+    init() {}
 }
+private let manager: PreviewManager = .init()
+private func deleteHistoryAction(in manager: PreviewManager) -> DeleteHistoryAction {
+    .preview(with: { history in
+        Task { @MainActor in
+            manager.histories.removeAll(where: { $0 == history })
+        }
+    })
+}
+private extension EnvironmentValues {
+    var previewManager: PreviewManager { manager }
+    @MainActor var previewHistories: [History]? { previewManager.histories }
+    var previewAction: DeleteHistoryAction? { deleteHistoryAction(in: previewManager) }
+}
+
+#Preview {
+    TextListView(
+        histories: .init(\.previewHistories),
+        deleteHistory: .init(\.previewAction)
+    )
+}
+#endif
