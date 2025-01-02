@@ -1,6 +1,6 @@
 //
 //  HistoryManagerProtocol.swift
-//  
+//
 //
 //  Created by 史 翔新 on 2023/03/24.
 //
@@ -22,7 +22,7 @@ public struct AddHistoryAction: Sendable {
     fileprivate init(execution: @Sendable @escaping (History) async -> Void) {
         self.execution = execution
     }
-    public static func preview(with execution: @Sendable @escaping (History) async -> Void = {_ in}) -> Self {
+    public static func preview(with execution: @Sendable @escaping (History) async -> Void = { _ in }) -> Self {
         return self.init(execution: {
             print(#file, #line, #function)
             await execution($0)
@@ -38,7 +38,7 @@ public struct DeleteHistoryAction: Sendable {
     fileprivate init(execution: @Sendable @escaping (History) async -> Void) {
         self.execution = execution
     }
-    public static func preview(with execution: @Sendable @escaping (History) async -> Void = {_ in}) -> Self {
+    public static func preview(with execution: @Sendable @escaping (History) async -> Void = { _ in }) -> Self {
         return self.init(execution: {
             print(#file, #line, #function)
             await execution($0)

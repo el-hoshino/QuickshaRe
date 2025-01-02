@@ -12,6 +12,7 @@ import Observation
 public final class HistoryManager: Sendable {
     
     private enum SaveDataVersion: Codable {
+        // swiftlint:disable:next identifier_name
         case v1
     }
     
@@ -87,6 +88,7 @@ extension HistoryManager: HistoryManagerProtocol {
         
         // If the list is too long, remove the oldest history.
         await MainActor.run { [self] in
+            // swiftlint:disable:next optional_default_value
             while (histories?.count ?? 0) >= maxHistoryCount {
                 self.histories?.removeFirst()
             }
