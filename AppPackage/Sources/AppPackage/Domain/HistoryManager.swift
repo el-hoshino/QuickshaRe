@@ -29,10 +29,10 @@ public final class HistoryManager: Sendable {
     }
     
     @MainActor
-    init() {
+    public init() {
         
         // Load the history list from the user defaults.
-        guard let historyDataVersion = userDefaults.value(forKey: defaultsVersionKey) as? SaveDataVersion else {
+        guard let historyDataVersion: SaveDataVersion = userDefaults.loadCodable(forKey: defaultsVersionKey) else {
             self.histories = []
             return
         }
@@ -50,9 +50,8 @@ public final class HistoryManager: Sendable {
     
     private func initialLoadHistories() async {
         let histories = await MainActor.run { () -> [History] in
-            let value = userDefaults.array(forKey: defaultsHistoryKey)
-            guard let array = value as? [History] else {
-                assertionFailure("Invalid history object")
+            let array: [History]? = userDefaults.loadCodable(forKey: defaultsHistoryKey)
+            guard let array else {
                 return []
             }
             return array
@@ -67,8 +66,8 @@ public final class HistoryManager: Sendable {
     @MainActor
     private func saveHistoriesIfAvailable() {
         guard let histories else { return }
-        userDefaults.set(SaveDataVersion.v1, forKey: defaultsVersionKey)
-        userDefaults.set(histories, forKey: defaultsHistoryKey)
+        userDefaults.saveCodable(SaveDataVersion.v1, forKey: defaultsVersionKey)
+        userDefaults.saveCodable(histories, forKey: defaultsHistoryKey)
     }
     
 }
@@ -139,5 +138,18 @@ private extension Optional {
             }
             await Task.yield()
         }
+    }
+}
+
+private extension UserDefaults {
+    func saveCodable<Element: Codable>(_ value: Element, forKey key: String) {
+        let data = try? JSONEncoder().encode(value)
+        setValue(data, forKey: key)
+    }
+    
+    func loadCodable<Element: Codable>(forKey key: String) -> Element? {
+        guard let data = data(forKey: key) else { return nil }
+        let element = try? JSONDecoder().decode(Element.self, from: data)
+        return element
     }
 }

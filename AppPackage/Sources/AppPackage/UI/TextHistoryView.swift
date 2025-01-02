@@ -7,19 +7,33 @@
 
 import SwiftUI
 
-struct TextListView: View {
+public struct TextHistoryView: View {
     
     @Environment(\.histories) var histories: [History]?
     @Environment(\.deleteHistory) var deleteHistory: DeleteHistoryAction?
     
-    var body: some View {
-        NavigationStack {
-            if let histories {
+    public init() {}
+    
+    public var body: some View {
+        if let histories {
+            contents(of: histories)
+        } else {
+            Text("Loading...")
+        }
+    }
+    
+    @ViewBuilder
+    private func contents(of histories: [History]) -> some View {
+        if histories.isEmpty {
+            Text("No history available.")
+        } else {
+            NavigationSplitView {
                 List {
                     historyList(of: histories)
                 }
-            } else {
-                Text("Loading...")
+                .navigationBarTitle("History")
+            } detail: {
+                Text("Select a history.")
             }
         }
     }
@@ -46,6 +60,16 @@ struct TextListView: View {
 }
 
 #if DEBUG
+private extension TextHistoryView {
+    init(
+        histories: Environment<[History]?>,
+        deleteHistory: Environment<DeleteHistoryAction?>
+    ) {
+        self._histories = histories
+        self._deleteHistory = deleteHistory
+    }
+}
+
 @Observable
 private final class PreviewManager: Sendable {
     @MainActor
@@ -62,6 +86,7 @@ private final class PreviewManager: Sendable {
     
     init() {}
 }
+
 private let manager: PreviewManager = .init()
 private func deleteHistoryAction(in manager: PreviewManager) -> DeleteHistoryAction {
     .preview(with: { history in
@@ -77,7 +102,7 @@ private extension EnvironmentValues {
 }
 
 #Preview {
-    TextListView(
+    TextHistoryView(
         histories: .init(\.previewHistories),
         deleteHistory: .init(\.previewAction)
     )
