@@ -11,13 +11,22 @@ import AppPackage
 @main
 struct QuickshaReApp: App {
     @State private var qrCodeGenerator: QRCodeGeneratorObject = QRPictureGenerator()
+    @State private var historyManager: HistoryManagerProtocol = HistoryManager()
     var body: some Scene {
         WindowGroup {
-            NavigationView(content: {
+            TabView {
                 TextInputView()
-                Text("Input text from navigation bar to generate QR code image 😘")
-            })
+                    .tabItem {
+                        Text("New")
+                    }
+
+                TextHistoryView()
+                    .tabItem {
+                        Text("History")
+                    }
+            }
         }
         .environment(\.qrCodeGenerator, qrCodeGenerator)
+        .environment(\.historyManager, historyManager)
     }
 }

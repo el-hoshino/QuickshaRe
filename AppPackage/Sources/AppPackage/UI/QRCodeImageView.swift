@@ -12,6 +12,7 @@ import Combine
 struct QRCodeImageView: View {
     
     @Environment(\.qrCodeGenerator) var generator: QRCodeGeneratorObject?
+    @Environment(\.addHistory) var addHistory: AddHistoryAction?
     
     var content: String
     
@@ -24,6 +25,9 @@ struct QRCodeImageView: View {
             qrCodeImage
             Text(content)
             Spacer()
+        }
+        .task {
+            await addHistory?(content)
         }
     }
     
