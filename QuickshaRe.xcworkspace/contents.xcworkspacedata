@@ -5,6 +5,9 @@
       location = "group:"
       name = "Environment">
       <FileRef
+         location = "group:.editorconfig">
+      </FileRef>
+      <FileRef
          location = "group:SwiftPackages">
       </FileRef>
       <FileRef
