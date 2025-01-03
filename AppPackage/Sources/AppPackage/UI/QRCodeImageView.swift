@@ -9,51 +9,51 @@
 import SwiftUI
 import Combine
 
-struct QRCodeImageView<CodeGenerator: QRCodeGeneratorObject>: View {
+struct QRCodeImageView: View {
     
-    private let generator: CodeGenerator
+    @Environment(\.qrCodeGenerator) var generator: QRCodeGeneratorObject?
+    @Environment(\.addHistory) var addHistory: AddHistoryAction?
     
     var content: String
     
-    init(generator: CodeGenerator, content: String) {
-        self.generator = generator
+    init(content: String) {
         self.content = content
     }
     
     var body: some View {
         VStack {
+            qrCodeImage
+            Text(content)
+            Spacer()
+        }
+        .task {
+            await addHistory?(content)
+        }
+    }
+    
+    @ViewBuilder
+    private var qrCodeImage: some View {
+        if let generator {
             Image(uiImage: generator.qrPicture(for: content).uiImage)
                 .interpolation(.none)
                 .resizable()
                 .scaledToFit()
-            Text(content)
-            Spacer()
+
+        } else {
+            Text("Failed to initialize QRCode Generator")
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        Group {
-            
-            NavigationView {
-                QRCodeImageView(
-                    generator: QRPictureGenerator(),
-                    content: "https://github.com/el-hoshino/QuickshaRe"
-                )
-            }.environment(\.colorScheme, .light)
-            
-            NavigationView {
-                QRCodeImageView(
-                    generator: QRPictureGenerator(),
-                    content: "https://github.com/el-hoshino/QuickshaRe"
-                )
-            }.environment(\.colorScheme, .dark)
-            
-        }
-        
+#if DEBUG
+@MainActor
+private let qrCodeGenerator = QRPictureGenerator()
+#Preview {
+    NavigationStack {
+        QRCodeImageView(
+            content: "https://github.com/el-hoshino/QuickshaRe"
+        )
     }
-    
+    .environment(\.qrCodeGenerator, qrCodeGenerator)
 }
+#endif

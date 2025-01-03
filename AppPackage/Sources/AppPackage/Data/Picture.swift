@@ -11,11 +11,10 @@ import UIKit
 import CoreImage
 import CoreGraphics
 
-public struct Picture {
+public struct Picture: Sendable {
     
-    fileprivate enum ImageType {
+    fileprivate enum ImageType: Sendable {
         case uiImage(UIImage)
-        case ciImage(CIImage)
         case cgImage(CGImage)
     }
     
@@ -23,10 +22,6 @@ public struct Picture {
     
     init(uiImage: UIImage) {
         self.imageData = .uiImage(uiImage)
-    }
-    
-    init(ciImage: CIImage) {
-        self.imageData = .ciImage(ciImage)
     }
     
     init(cgImage: CGImage) {
@@ -45,9 +40,6 @@ private extension Picture.ImageType {
         switch self {
         case .uiImage(let image):
             return image
-            
-        case .ciImage(let image):
-            return UIImage(ciImage: image)
             
         case .cgImage(let image):
             return UIImage(cgImage: image)

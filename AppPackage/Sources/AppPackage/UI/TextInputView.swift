@@ -16,6 +16,14 @@ public struct TextInputView: View {
     public init() {}
     
     public var body: some View {
+        NavigationSplitView {
+            inputField
+        } detail: {
+            Text("Input text from navigation bar to generate QR code image 😘")
+        }
+    }
+    
+    private var inputField: some View {
         HStack {
             TextField(
                 "Type here to input text",
@@ -42,7 +50,7 @@ public struct TextInputView: View {
     }
     
     private func makeQRCodeImageView() -> some View {
-        return QRCodeImageView(generator: QRPictureGenerator(), content: inputText)
+        return QRCodeImageView(content: inputText)
     }
     
 }
@@ -67,21 +75,13 @@ extension View {
     
 }
 
-struct TextInputView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        Group {
-            
-            NavigationView {
-                TextInputView()
-            }.environment(\.colorScheme, .light)
-            
-            NavigationView {
-                TextInputView()
-            }.environment(\.colorScheme, .dark)
-            
-        }
-        
+#if DEBUG
+@MainActor
+private let qrCodeGenerator = QRPictureGenerator()
+#Preview {
+    NavigationView {
+        TextInputView()
     }
-    
+    .environment(\.qrCodeGenerator, qrCodeGenerator)
 }
+#endif
