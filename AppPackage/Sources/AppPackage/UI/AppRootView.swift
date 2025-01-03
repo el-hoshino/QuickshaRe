@@ -19,12 +19,12 @@ public struct AppRootView: View {
 
             TextInputView()
                 .tabItem {
-                    Text("New")
+                    Label("Generator", systemImage: "qrcode")
                 }
 
             TextHistoryView()
                 .tabItem {
-                    Text("History")
+                    Label("History", systemImage: "archivebox")
                 }
 
         }
