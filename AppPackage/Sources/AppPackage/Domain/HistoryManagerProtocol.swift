@@ -10,6 +10,7 @@ import Observation
 
 // A history manager protocol
 public protocol HistoryManagerProtocol: Sendable, Observable {
+    func reloadHistories() async
     func addHistory(_ history: History) async
     func deleteHistory(_ history: History) async
     func deleteAllHistories() async
