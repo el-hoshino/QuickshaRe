@@ -11,3 +11,9 @@ import Foundation
 public protocol QRCodeGeneratorObject: AnyObject {
     func qrPicture(for text: String) -> Picture
 }
+
+import SwiftUI
+
+public extension EnvironmentValues {
+    @Entry var qrCodeGenerator: QRCodeGeneratorObject?
+}

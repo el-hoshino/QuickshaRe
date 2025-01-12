@@ -9,6 +9,7 @@
 import XCTest
 import CoreImage
 
+@MainActor
 class QuickshaReUITests: XCTestCase {
     
     func testQRCodeGenerationFromMainApp() {

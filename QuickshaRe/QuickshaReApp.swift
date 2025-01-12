@@ -12,10 +12,7 @@ import AppPackage
 struct QuickshaReApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView(content: {
-                TextInputView()
-                Text("Input text from navigation bar to generate QR code image 😘")
-            })
+            AppRootView()
         }
     }
 }

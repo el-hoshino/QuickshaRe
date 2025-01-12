@@ -10,6 +10,7 @@ import XCTest
 import ViewInspector
 @testable import AppPackage
 
+@MainActor
 class TextInputViewTests: XCTestCase {
     
     func testTextInputView() throws {
@@ -26,10 +27,11 @@ class TextInputViewTests: XCTestCase {
         let generateButtonText = try view
             .generateButton()
             .labelView()
+            .implicitAnyView()
             .text()
             .string()
         XCTAssertEqual(generateButtonText, "Generate")
-        
+
     }
     
 }
@@ -39,18 +41,13 @@ extension TextInputView {
     func inputTextField() throws -> InspectableView<ViewType.TextField> {
         
         try inspect()
-        .hStack()
-        .vStack(0)
-        .textField(0)
-        
+            .find(ViewType.TextField.self)
     }
     
-    func generateButton() throws -> InspectableView<ViewType.NavigationLink> {
-        
+    func generateButton() throws -> InspectableView<ViewType.Button> {
+
         try inspect()
-        .hStack()
-        .navigationLink(1)
-        
+            .find(button: "Generate")
     }
     
 }
