@@ -25,8 +25,10 @@ struct QRCodeImageView: View {
             Text(content)
             Spacer()
         }
-        .task {
-            await addHistory?(content)
+        .onChange(of: content, initial: true) { _, newValue in
+            Task {
+                await addHistory?(newValue)
+            }
         }
     }
     
