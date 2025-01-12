@@ -27,10 +27,11 @@ class TextInputViewTests: XCTestCase {
         let generateButtonText = try view
             .generateButton()
             .labelView()
+            .implicitAnyView()
             .text()
             .string()
         XCTAssertEqual(generateButtonText, "Generate")
-        
+
     }
     
 }
@@ -43,10 +44,10 @@ extension TextInputView {
             .find(ViewType.TextField.self)
     }
     
-    func generateButton() throws -> InspectableView<ViewType.NavigationLink> {
-        
+    func generateButton() throws -> InspectableView<ViewType.Button> {
+
         try inspect()
-            .find(navigationLink: "Generate")
+            .find(button: "Generate")
     }
     
 }
