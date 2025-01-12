@@ -6,7 +6,7 @@
 //  Copyright © 2020 Crazism. All rights reserved.
 //
 
-import UIKit
+@preconcurrency import UIKit
 import Social
 import MobileCoreServices
 import AppPackage
@@ -19,22 +19,27 @@ class ShareViewController: UIViewController {
     struct Dismiss: Error {
         static let dummyError: Dismiss = .init()
     }
-    
+
+    enum SupportedAttachmentType {
+        case url
+        case text
+    }
+
     @IBOutlet private weak var qrImageView: UIImageView!
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var sharingItemSwitch: UISegmentedControl!
     
     private lazy var generator = QRPictureGenerator()
     
-    private typealias SharingItem = (type: String, content: String)
+    private typealias SharingItem = (type: SupportedAttachmentType, content: String)
     private var sharingItems: [SharingItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        retrieveData { [weak self] (items) in
-            DispatchQueue.main.async {
-                self?.refreshView(with: items)
+        Task {
+            if let items = await retrieveData() {
+                refreshView(with: items)
             }
         }
     }
@@ -45,17 +50,14 @@ class ShareViewController: UIViewController {
         
     }
     
-    private func retrieveData(completion: @escaping ([SharingItem]) -> Void) {
+    private func retrieveData() async -> [SharingItem]? {
         
         guard let inputItem = extensionContext?.inputItems.first(compacted: { $0 as? NSExtensionItem }) else {
-            return
+            return nil
         }
-        
-        DispatchQueue.global().async {
-            let parsed = self.parsingSharingItems(from: inputItem)
-            completion(parsed)
-        }
-        
+
+        return await parsingSharingItems(from: inputItem)
+
     }
     
     private func refreshView(with items: [SharingItem]) {
@@ -86,64 +88,82 @@ class ShareViewController: UIViewController {
     
 }
 
+@globalActor
+private actor ItemProviderActor: GlobalActor {
+    static let shared = ItemProviderActor()
+}
+
+private final class ItemProviderWrapper: @unchecked Sendable {
+    let itemProvider: NSItemProvider
+    init(itemProvider: NSItemProvider) {
+        self.itemProvider = itemProvider
+    }
+
+    @ItemProviderActor
+    private var isLoading: Bool = false
+
+    @ItemProviderActor
+    func loadItem(forTypeIdentifier typeIdentifier: String) async throws -> NSSecureCoding {
+        while isLoading {
+            await Task.yield()
+        }
+        isLoading = true
+        defer { isLoading = false }
+
+        return try await itemProvider.loadItem(forTypeIdentifier: typeIdentifier)
+    }
+}
+
 extension ShareViewController {
-    
-    // TODO: Migrate to Swift Concurrency
-    private func loadItem(from attachment: NSItemProvider, as typeIdentifier: String, completion: @escaping (SharingItem?) -> Void) {
-        
-        attachment.loadItem(forTypeIdentifier: typeIdentifier) { (coding, error) in
-            
-            guard let item = coding else {
-                assertionFailure("Failed to load item for \(typeIdentifier). Error: \(error as Any)")
-                return completion(nil)
+
+    private func loadItem(from attachment: NSItemProvider, as typeIdentifier: String) async -> SharingItem? {
+
+        enum Error: Swift.Error {
+            case typeMismatch(parsedType: SupportedAttachmentType, parsedItem: any NSSecureCoding)
+        }
+
+        do {
+            guard let type = try SupportedAttachmentType(typeIdentifier: typeIdentifier) else {
+                return nil
             }
-            
-            guard let type = UTType(typeIdentifier) else {
-                defer { completion(nil) }
-                return
-            }
+            let wrapper = ItemProviderWrapper(itemProvider: attachment)
+            let item = try await wrapper.loadItem(forTypeIdentifier: typeIdentifier)
 
             switch type {
             case .url:
-                guard let url = item as? URL else { assertionFailure("Failed to load item as URL."); break }
-                return completion(("URL", url.absoluteString))
-                
-            case .text, .plainText:
-                guard let text = item as? String else { assertionFailure("Failed to load item as Text."); break }
-                return completion(("Text", text))
-                
-            default:
-                return completion(nil)
+                guard let url = item as? URL else {
+                    throw Error.typeMismatch(parsedType: type, parsedItem: item)
+                }
+                return (type, url.absoluteString)
+
+            case .text:
+                guard let text = item as? String else {
+                    throw Error.typeMismatch(parsedType: type, parsedItem: item)
+                }
+                return (type, text)
             }
             
+        } catch {
+            assertionFailure("Failed to load item for \(typeIdentifier). Error: \(error)")
+            return nil
         }
         
     }
-    
-    private func parsingSharingItems(from inputItem: NSExtensionItem) -> [SharingItem] {
-        
-        var output: [SharingItem] = []
-        
-        let dispatchGroup = DispatchGroup()
-        
-        for attatchment in inputItem.attachments ?? [] { // swiftlint:disable:this optional_default_value
-            for identifier in attatchment.registeredTypeIdentifiers {
-                
-                dispatchGroup.enter()
-                loadItem(from: attatchment, as: identifier, completion: { [dispatchGroup] item in
-                    defer { dispatchGroup.leave() }
-                    
-                    if let item = item {
-                        output.append(item)
-                    }
-                    
-                })
-                
-            }
-            
+
+    private func parsingSharingItems(from inputItem: NSExtensionItem) async -> [SharingItem] {
+
+        guard let attachments = inputItem.attachments else {
+            return []
         }
-        
-        dispatchGroup.wait()
+
+        var output: [SharingItem] = []
+        for attachment in attachments {
+            for identifier in attachment.registeredTypeIdentifiers {
+                if let item = await loadItem(from: attachment, as: identifier) {
+                    output.append(item)
+                }
+            }
+        }
         
         return output
         
@@ -154,7 +174,7 @@ extension ShareViewController {
         sharingItemSwitch.removeAllSegments()
         
         sharingItems.enumerated().forEach { (index, item) in
-            sharingItemSwitch.insertSegment(withTitle: item.type, at: index, animated: false)
+            sharingItemSwitch.insertSegment(withTitle: item.type.title, at: index, animated: false)
         }
         
         assert(sharingItemSwitch.numberOfSegments == sharingItems.count)
@@ -166,6 +186,48 @@ extension ShareViewController {
         
     }
     
+}
+
+extension ShareViewController.SupportedAttachmentType {
+    enum InitError: Error {
+        case uknownIdentifier(String)
+    }
+
+    init?(typeIdentifier: String) throws {
+        guard let utType = UTType(typeIdentifier) else {
+            throw InitError.uknownIdentifier(typeIdentifier)
+        }
+        switch utType {
+        case .text, .plainText:
+            self = .text
+
+        case .url:
+            self = .url
+
+        default:
+            return nil
+        }
+    }
+
+    var utType: UTType {
+        switch self {
+        case .text:
+            return .text
+
+        case .url:
+            return .url
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .url:
+            "URL"
+
+        case .text:
+            "Text"
+        }
+    }
 }
 
 extension Sequence {
