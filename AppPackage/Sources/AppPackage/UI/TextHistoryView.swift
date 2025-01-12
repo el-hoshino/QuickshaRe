@@ -32,6 +32,7 @@ public struct TextHistoryView: View {
                     historyList(of: histories)
                 }
                 .navigationBarTitle("History")
+                .animation(.default, value: histories)
             } detail: {
                 Text("Select a history.")
             }
