@@ -30,7 +30,8 @@ class ShareViewController: UIViewController {
     @IBOutlet private weak var sharingItemSwitch: UISegmentedControl!
     
     private lazy var generator = QRPictureGenerator()
-    
+    private lazy var historyManager = HistoryManager()
+
     private typealias SharingItem = (type: SupportedAttachmentType, content: String)
     private var sharingItems: [SharingItem] = []
     
@@ -79,7 +80,11 @@ class ShareViewController: UIViewController {
         textLabel.text = selectedItem.content
         let image = generator.qrPicture(for: selectedItem.content)
         qrImageView.image = image.uiImage
-        
+
+        Task {
+            await historyManager.addHistory(selectedItem.content)
+        }
+
     }
     
     @IBAction private func dismiss() {
