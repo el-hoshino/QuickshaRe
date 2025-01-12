@@ -14,11 +14,8 @@ struct QRCodeImageView: View {
     @Environment(\.addHistory) var addHistory: AddHistoryAction?
     
     var content: String
-    
-    init(content: String) {
-        self.content = content
-    }
-    
+    var shouldAddContentToHistory: Bool = true
+
     var body: some View {
         VStack {
             qrCodeImage
@@ -26,8 +23,10 @@ struct QRCodeImageView: View {
             Spacer()
         }
         .onChange(of: content, initial: true) { _, newValue in
-            Task {
-                await addHistory?(newValue)
+            if shouldAddContentToHistory {
+                Task {
+                    await addHistory?(newValue)
+                }
             }
         }
     }

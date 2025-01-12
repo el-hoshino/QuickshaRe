@@ -42,7 +42,8 @@ public struct TextHistoryView: View {
         ForEach(histories, id: \.self) { text in
             NavigationLink(text) {
                 QRCodeImageView(
-                    content: text
+                    content: text,
+                    shouldAddContentToHistory: false
                 )
             }
             .swipeActions(edge: .trailing) {
