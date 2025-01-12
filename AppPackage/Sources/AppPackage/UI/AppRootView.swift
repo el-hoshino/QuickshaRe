@@ -15,21 +15,29 @@ public struct AppRootView: View {
     public init() {}
 
     public var body: some View {
-        TabView {
+        TextInputView()
+            .toolbar {
+                toolbarContent
+            }
+            .environment(\.qrCodeGenerator, qrCodeGenerator)
+            .environment(\.historyManager, historyManager)
+    }
 
-            TextInputView()
-                .tabItem {
-                    Label("Generator", systemImage: "qrcode")
-                }
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
 
-            TextHistoryView()
-                .tabItem {
-                    Label("History", systemImage: "archivebox")
-                }
+        ToolbarItemGroup(placement: .bottomBar) {
+            Spacer()
 
+            SheetLink {
+                TextHistoryView()
+            } label: {
+                Label("History", systemImage: "archivebox")
+                    .labelStyle(.titleAndIcon)
+            }
+            .buttonStyle(.borderless)
         }
-        .environment(\.qrCodeGenerator, qrCodeGenerator)
-        .environment(\.historyManager, historyManager)
+
     }
 
 }
