@@ -8,6 +8,8 @@
 import Foundation
 import Observation
 
+private let defaultSuiteName = "group.net.crazism.QuickshaRe"
+
 @Observable
 public final class HistoryManager: Sendable {
     
@@ -17,7 +19,10 @@ public final class HistoryManager: Sendable {
     }
     
     @MainActor
-    private let userDefaults = UserDefaults.standard
+    private let userDefaults: UserDefaults = .init(suiteName: defaultSuiteName) ?? { // swiftlint:disable:this optional_default_value
+        assertionFailure("Failed to initialize UserDefaults with suite name \(defaultSuiteName)")
+        return .standard
+    }()
     private let defaultsVersionKey = "HistoryManagerDefaultsVersion"
     private let defaultsHistoryKey = "HistoryManagerGenerationHistory"
     private let maxHistoryCount = 50
