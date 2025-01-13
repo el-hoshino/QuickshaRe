@@ -6,6 +6,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-01-13
+
+### Added
+
+- History feature!
+
+### Enhanced
+
+- Xcode 16 Support
+- iOS 17 & 18 Support
+- Swift 6 migration
+- Swift Concurrency migration
+- Observation migration
+
+### Removed
+
+- iOS 14 ~ 16 support
+
 ## [1.0.3] - 2023-02-02
 
 ### Enhanced
