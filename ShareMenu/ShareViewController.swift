@@ -93,35 +93,9 @@ class ShareViewController: UIViewController {
     
 }
 
-@globalActor
-private actor ItemProviderActor: GlobalActor {
-    static let shared = ItemProviderActor()
-}
-
-private final class ItemProviderWrapper: @unchecked Sendable {
-    let itemProvider: NSItemProvider
-    init(itemProvider: NSItemProvider) {
-        self.itemProvider = itemProvider
-    }
-
-    @ItemProviderActor
-    private var isLoading: Bool = false
-
-    @ItemProviderActor
-    func loadItem(forTypeIdentifier typeIdentifier: String) async throws -> NSSecureCoding {
-        while isLoading {
-            await Task.yield()
-        }
-        isLoading = true
-        defer { isLoading = false }
-
-        return try await itemProvider.loadItem(forTypeIdentifier: typeIdentifier)
-    }
-}
-
 extension ShareViewController {
 
-    private func loadItem(from attachment: NSItemProvider, as typeIdentifier: String) async -> SharingItem? {
+    private func loadItem(from attachment: sending NSItemProvider, as typeIdentifier: String) async -> SharingItem? {
 
         enum Error: Swift.Error {
             case typeMismatch(parsedType: SupportedAttachmentType, parsedItem: any NSSecureCoding)
@@ -131,8 +105,7 @@ extension ShareViewController {
             guard let type = try SupportedAttachmentType(typeIdentifier: typeIdentifier) else {
                 return nil
             }
-            let wrapper = ItemProviderWrapper(itemProvider: attachment)
-            let item = try await wrapper.loadItem(forTypeIdentifier: typeIdentifier)
+            let item = try await attachment.loadItem(forTypeIdentifier: typeIdentifier)
 
             switch type {
             case .url:
