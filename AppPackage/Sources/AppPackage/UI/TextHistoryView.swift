@@ -10,7 +10,7 @@ import SwiftUI
 public struct TextHistoryView: View {
     
     @Environment(\.histories) var histories: [History]?
-    @Environment(\.deleteHistory) var deleteHistory: DeleteHistoryAction?
+    @Environment(\.deleteHistory) var deleteHistory: DeleteHistoryAction
     
     public init() {}
     
@@ -50,7 +50,7 @@ public struct TextHistoryView: View {
             .swipeActions(edge: .trailing) {
                 Button(role: .destructive) {
                     Task {
-                        await deleteHistory?(of: text)
+                        await deleteHistory(of: text)
                     }
                 } label: {
                     Label("Delete", systemImage: "trash")
@@ -65,7 +65,7 @@ public struct TextHistoryView: View {
 private extension TextHistoryView {
     init(
         histories: Environment<[History]?>,
-        deleteHistory: Environment<DeleteHistoryAction?>
+        deleteHistory: Environment<DeleteHistoryAction>
     ) {
         self._histories = histories
         self._deleteHistory = deleteHistory
@@ -100,7 +100,7 @@ private func deleteHistoryAction(in manager: PreviewManager) -> DeleteHistoryAct
 private extension EnvironmentValues {
     var previewManager: PreviewManager { manager }
     @MainActor var previewHistories: [History]? { previewManager.histories }
-    var previewAction: DeleteHistoryAction? { deleteHistoryAction(in: previewManager) }
+    var previewAction: DeleteHistoryAction { deleteHistoryAction(in: previewManager) }
 }
 
 #Preview {

@@ -91,13 +91,22 @@ public extension EnvironmentValues {
     @MainActor var histories: [History]? {
         historyManager?.getHistories()
     }
-    var addHistory: AddHistoryAction? {
-        historyManager?.addHistoryAction
+    var addHistory: AddHistoryAction {
+        // swiftlint:disable:next optional_default_value
+        historyManager?.addHistoryAction ?? .preview {
+            assertionFailure("Failed to add \($0): HistoryManager not exist.")
+        }
     }
-    var deleteHistory: DeleteHistoryAction? {
-        historyManager?.deleteHistoryAction
+    var deleteHistory: DeleteHistoryAction {
+        // swiftlint:disable:next optional_default_value
+        historyManager?.deleteHistoryAction ?? .preview {
+            assertionFailure("Failed to delete \($0): HistoryManager not exist.")
+        }
     }
-    var deleteAllHistories: DeleteAllHistoriesAction? {
-        historyManager?.deleteAllHistoriesAction
+    var deleteAllHistories: DeleteAllHistoriesAction {
+        // swiftlint:disable:next optional_default_value
+        historyManager?.deleteAllHistoriesAction ?? .preview {
+            assertionFailure("Failed to delete all histories: HistoryManager not exist.")
+        }
     }
 }

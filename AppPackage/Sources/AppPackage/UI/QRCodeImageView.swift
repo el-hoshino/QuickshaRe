@@ -11,7 +11,7 @@ import SwiftUI
 struct QRCodeImageView: View {
     
     @Environment(\.qrCodeGenerator) var generator: QRCodeGeneratorObject?
-    @Environment(\.addHistory) var addHistory: AddHistoryAction?
+    @Environment(\.addHistory) var addHistory: AddHistoryAction
     
     var content: String
     var shouldAddContentToHistory: Bool = true
@@ -25,7 +25,7 @@ struct QRCodeImageView: View {
         .onChange(of: content, initial: true) { _, newValue in
             if shouldAddContentToHistory {
                 Task {
-                    await addHistory?(newValue)
+                    await addHistory(newValue)
                 }
             }
         }
