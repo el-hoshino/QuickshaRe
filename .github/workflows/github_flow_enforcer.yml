@@ -1,0 +1,13 @@
+name: GitHub-Flow Enforcer
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  github-flow-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Verify git flow
+        run: bash .github/workflows/check-github-flow.sh ${{ github.head_ref }} ${{ github.base_ref }}
