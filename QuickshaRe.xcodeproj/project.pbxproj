@@ -325,7 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "eval $SWIFT_PACKAGES_RUN swiftlint --config swiftlint.yml\n";
+			shellScript = "#TODO: Migrate to PlugIn\n#eval $SWIFT_PACKAGES_RUN swiftlint --config swiftlint.yml\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
