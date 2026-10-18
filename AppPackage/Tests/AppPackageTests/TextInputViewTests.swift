@@ -27,7 +27,6 @@ class TextInputViewTests: XCTestCase {
         let generateButtonText = try view
             .generateButton()
             .labelView()
-            .implicitAnyView()
             .text()
             .string()
         XCTAssertEqual(generateButtonText, "Generate")
