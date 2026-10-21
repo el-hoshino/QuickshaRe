@@ -1,23 +1,26 @@
 #!/bin/bash
 
-# Get the head branch name
-HEAD_BRANCH=$(echo "$1" | awk -F/ '{print $1}')
+set -euo pipefail
 
-# Get the base branch name
-BASE_BRANCH=$(echo "$2" | awk -F/ '{print $1}')
+HEAD_BRANCH=${1:-}
+BASE_BRANCH=${2:-}
 
 echo "Head branch: ${HEAD_BRANCH}, Base branch: ${BASE_BRANCH}"
 
-# Check if head branch is feature branch and base branch is develop
-if [[ "${HEAD_BRANCH}" == "feature" ]]; then
-  if [ "${BASE_BRANCH}" != "main" ]; then
-    echo "Error: A feature branch can only be merged into the main branch."
-    exit 1
-  fi
-
-else
-  echo "Error: Head branch must be a feature branch."
+# GitHub Flow branches must target main.
+if [[ "${BASE_BRANCH}" != "main" ]]; then
+  echo "Error: Pull requests must target the main branch."
   exit 1
 fi
+
+# Allow both human-created feature branches and Codex-created branches.
+case "${HEAD_BRANCH}" in
+  feature/* | codex/*)
+    ;;
+  *)
+    echo "Error: Head branch must start with feature/ or codex/."
+    exit 1
+    ;;
+esac
 
 echo "Branch name convention is valid."

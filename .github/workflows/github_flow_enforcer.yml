@@ -9,5 +9,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Verify git flow
-        run: bash .github/workflows/check-github-flow.sh ${{ github.head_ref }} ${{ github.base_ref }}
+      - name: Verify GitHub Flow
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+          BASE_BRANCH: ${{ github.base_ref }}
+        run: bash .github/workflows/check-github-flow.sh "$HEAD_BRANCH" "$BASE_BRANCH"
