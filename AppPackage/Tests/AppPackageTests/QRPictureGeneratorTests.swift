@@ -1,6 +1,6 @@
 //
-//  QRPictoreGeneratorTests.swift
-//  QRPictoreGeneratorTests
+//  QRPictureGeneratorTests.swift
+//  QRPictureGeneratorTests
 //
 //  Created by 史翔新 on 2019/12/17.
 //  Copyright © 2019 Crazism. All rights reserved.
@@ -11,7 +11,7 @@ import CoreImage
 @testable import AppPackage
 
 @MainActor
-class QRPictoreGeneratorTests: XCTestCase {
+class QRPictureGeneratorTests: XCTestCase {
     
     func testPictureGeneration() {
         
